@@ -2,31 +2,36 @@ package fr.humanbooster.cap_entreprise.business;
 
 import java.util.*;
 
-/**
- * 
- */
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Editeur {
 
-    /**
-     * Default constructor
-     */
-    public Editeur() {
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    /**
-     * 
-     */
-    private Long id;
+	@NotBlank
+	private String nom;
 
-    /**
-     * 
-     */
-    private String nom;
+	private List<Jeu> jeux;
 
-
-    /**
-     * 
-     */
-    private Set<Jeu> jeux;
+	@Override
+	public String toString() {
+		return "Editeur [id=" + id + ", nom=" + nom + "]";
+	}
 
 }
