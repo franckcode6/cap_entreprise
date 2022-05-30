@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import lombok.EqualsAndHashCode;
@@ -19,6 +20,7 @@ public class Joueur extends Utilisateur {
 	@NotBlank
 	private LocalDate dateDeNaissance;
 
+	@OneToMany(mappedBy = "joueur")
 	private List<Avis> avis;
 
 	public Joueur(String pseudo, String email, String motDePasse, LocalDate dateDeNaissance) {
