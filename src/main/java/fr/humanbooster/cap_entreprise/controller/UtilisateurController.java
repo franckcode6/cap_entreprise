@@ -2,6 +2,8 @@ package fr.humanbooster.cap_entreprise.controller;
 
 import java.time.LocalDate;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,7 @@ import lombok.AllArgsConstructor;
 public class UtilisateurController {
 
 	private final UtilisateurService utilisateurService;
+	private final HttpSession httpSession;
 
 	@GetMapping({ "/index", "/" })
 	public ModelAndView connexionGet() {
@@ -26,13 +29,17 @@ public class UtilisateurController {
 		return mav;
 	}
 
-	@PostMapping({ "/index", "/" }) 
+	@PostMapping({ "/index", "/" })
 	public ModelAndView connexionPost(@RequestParam("pseudo") String pseudo,
 			@RequestParam("motDePasse") String motDePasse) {
-		
-		utilisateurService.recupererUtilisateur(pseudo, motDePasse);
-		
-		return new ModelAndView("redirect:/avis");
+
+		if (utilisateurService.recupererUtilisateur(pseudo, motDePasse) == null) {
+			return new ModelAndView("redirect:index");
+		} else {
+			httpSession.setAttribute("utilisateur", utilisateurService.recupererUtilisateur(pseudo, motDePasse));
+			System.out.println("CONNEXION OK");
+			return new ModelAndView("redirect:/jeux");
+		}
 	}
 
 	@GetMapping("/inscription")

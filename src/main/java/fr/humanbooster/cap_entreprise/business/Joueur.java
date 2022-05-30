@@ -5,19 +5,23 @@ import java.util.*;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Joueur extends Utilisateur {
 
-	@NotBlank
+	@Past
 	private LocalDate dateDeNaissance;
 
 	@OneToMany(mappedBy = "joueur")
