@@ -28,7 +28,7 @@ public class Plateforme {
 	@NotBlank
 	private String nom;
 
-	@ManyToMany
+	@ManyToMany(mappedBy="plateformes")
 	private List<Jeu> jeux;
 	
 	public Plateforme(String nom) {

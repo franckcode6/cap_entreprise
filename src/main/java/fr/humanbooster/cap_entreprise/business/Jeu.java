@@ -35,17 +35,17 @@ public class Jeu {
 	@NotBlank
 	private String description;
 
-	@NotBlank
+	@NotNull
 	@PastOrPresent
 	private LocalDate dateSortie;
 
-	private String Image;
+	private String image;
 
 	@ManyToOne
 	private Moderateur moderateur;
 
-	@ManyToOne
 	@NotNull
+	@ManyToOne
 	private ModeleEconomique modeleEconomique;
 
 	@ManyToMany
@@ -69,11 +69,28 @@ public class Jeu {
 	public Jeu() {
 		this.dateSortie = LocalDate.now();
 	}
+	
+	public Jeu(String nom, String description, LocalDate dateSortie, String image, Moderateur moderateur,
+            ModeleEconomique modeleEconomique, List<Plateforme> plateformes, Editeur editeur, Genre genre,
+            Classification classification) {
+        super();
+        this.nom = nom;
+        this.description = description;
+        this.dateSortie = dateSortie;
+        this.image = image;
+        this.moderateur = moderateur;
+        this.modeleEconomique = modeleEconomique;
+        this.plateformes = plateformes;
+        this.editeur = editeur;
+        this.genre = genre;
+        this.classification = classification;
+
+    }
 
 	@Override
 	public String toString() {
 		return "Jeu [id=" + id + ", nom=" + nom + ", description=" + description + ", dateSortie=" + dateSortie
-				+ ", Image=" + Image + "]";
+				+ ", Image=" + image + "]";
 	}
 
 }
