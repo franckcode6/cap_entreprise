@@ -79,16 +79,17 @@ public class JeuxController {
 			@RequestParam("plateformes") List<Plateforme> plateformes, @RequestParam("editeur") Editeur editeur,
 			@RequestParam("genre") Genre genre, @RequestParam("classification") Classification classification)
 			throws IOException {
-		
+
 		LocalDate dateSortie = LocalDate.parse(dateForm);
 
 		Moderateur moderateur = (Moderateur) httpSession.getAttribute("utilisateur");
-		
+
 		String image = multipartFile.getOriginalFilename();
 
 		enregistrerFichier(image, multipartFile);
-		
-		jeuService.ajouterJeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes, editeur, genre, classification);
+
+		jeuService.ajouterJeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes, editeur,
+				genre, classification);
 
 		return new ModelAndView("redirect:/admin/jeux");
 	}

@@ -4,64 +4,84 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Jeux ajout</title>
 </head>
-<body>
-<h1>Ajout de jeu</h1>
+<body class="container">
+<h1>Ajouter un nouveau jeu</h1>
 
-	<form action="" method="post" enctype="multipart/form-data">
-		<label for="nom">Nom</label><input name="nom"><br>
+	<form action="" method="post" enctype="multipart/form-data" class="my-4">
+	<div class="mb-3">
+		<label for="nom" class="form-label">Nom</label>
+		<input name="nom" class="form-control"><br>
+	</div>
 
-		<label for="description">Description</label>
-		<textarea name="description"></textarea><br>
-		
-		<label for="dateForm">Date de sortie</label>
-		<input type="date" name="dateSortie"><br>
-		
-		<input type="file" name="image" accept="image" placeholder="URL"><br>
-
-		<label for="classification_id">Classification</label>
-		<select name="classification">
+	<div class="mb-3">
+		<label for="description" class="form-label">Description</label>
+		<textarea name="description" class="form-control"></textarea><br>
+	</div>
+	
+	<div class="mb-3">
+		<label for="dateForm" class="form-label">Date de sortie</label>
+		<input type="date" name="dateSortie" class="form-control"><br>
+	</div>
+	
+	<div class="mb-3">
+		<label for="image" class="form-label">Téléverser une image</label>
+		<input type="file" name="image" accept="image" placeholder="URL" class="form-control"><br>
+	</div>
+	
+	<div class="mb-3">
+		<label for="classification_id" class="form-label">Classification</label>
+		<select name="classification" class="form-select">
 			<option value="0">Merci de choisir une classification</option>
 			<c:forEach items="${classifications}" var="classification">
 				<option value="${classification.id}">${classification.nom}</option>
 			</c:forEach>
 		</select><br>
-		
-		<label for="editeur_id">Editeur</label> 
-		<select name="editeur">
+	</div>
+	
+	<div class="mb-3">
+		<label for="editeur_id" class="form-label">Editeur</label> 
+		<select name="editeur" class="form-select">
 			<option value="0">Merci de choisir un éditeur</option>
 			<c:forEach items="${editeurs}" var="editeur">
 				<option value="${editeur.id}">${editeur.nom}</option>
 			</c:forEach>
 		</select><br>
-		
-		<label for="genre_id">Genre</label> 
-		<select name="genre">
+	</div>
+	
+	<div class="mb-3">
+		<label for="genre_id" class="form-label">Genre</label> 
+		<select name="genre" class="form-select">
 			<option value="0">Merci de choisir un genre</option>
 			<c:forEach items="${genres}" var="genre">
 				<option value="${genre.id}">${genre.nom}</option>
 			</c:forEach>
 		</select><br>
-		
-		<label for="modeleEconomique_id">Modele Economique</label> 
-		<select name="modeleEconomique">
+	</div>
+	
+	<div class="mb-3">
+		<label for="modeleEconomique_id" class="form-label">Modele Economique</label> 
+		<select name="modeleEconomique" class="form-select">
 			<option value="0">Merci de choisir un modèle économique</option>
 			<c:forEach items="${modeleEconomiques}" var="modeleEconomique">
 				<option value="${modeleEconomique.id}">${modeleEconomique.nom}</option>
 			</c:forEach>
 		</select><br>
-		
+	</div>
+	
+	<div class="mb-3">
 		<label for="plateforme_id">Plateforme(s)</label> 
-		<select name="plateformes" multiple >
+		<select name="plateformes" multiple class="form-select">
 			<option value="0">Merci de choisir une plateforme</option>
 			<c:forEach items="${plateformes}" var="plateforme">
 				<option value="${plateforme.id}">${plateforme.nom}</option>
 			</c:forEach>
 		</select><br>
-		
-	 <input class="button" type="submit" value="Ajouter">
+	</div>
+	 <input class="btn btn-success" type="submit" value="Ajouter">
 	</form>
 </body>
 </html>

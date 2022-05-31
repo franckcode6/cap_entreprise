@@ -17,4 +17,6 @@ public interface JeuService {
 			ModeleEconomique modeleEconomique, List<Plateforme> plateformes, Editeur editeur, Genre genre,
 			Classification classification);
 
+	List<Jeu> recupererJeux();
+
 }

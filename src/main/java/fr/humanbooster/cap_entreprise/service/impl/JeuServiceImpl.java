@@ -28,6 +28,10 @@ public class JeuServiceImpl implements JeuService {
 			Classification classification) {
 		return jeuDao.save(new Jeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes,
 				editeur, genre, classification));
-
 	}
+	
+	@Override
+    public List<Jeu> recupererJeux() {
+        return jeuDao.findAll();
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.humanbooster.cap_entreprise.business.Utilisateur;
 import fr.humanbooster.cap_entreprise.service.UtilisateurService;
 import lombok.AllArgsConstructor;
 
@@ -33,13 +34,22 @@ public class UtilisateurController {
 	public ModelAndView connexionPost(@RequestParam("pseudo") String pseudo,
 			@RequestParam("motDePasse") String motDePasse) {
 
-		if (utilisateurService.recupererUtilisateur(pseudo, motDePasse) == null) {
-			return new ModelAndView("redirect:index");
+		Utilisateur utilisateur = utilisateurService.recupererUtilisateur(pseudo, motDePasse);
+		System.out.println("utilisateur: " + utilisateur);
+
+		if (utilisateur == null) {
+			ModelAndView mav = new ModelAndView("redirect:/index");
+			return mav;
+		} else if (utilisateur.getPseudo().equals("franck")) {
+			httpSession.setAttribute("moderateur", utilisateur);
+			ModelAndView mav = new ModelAndView("redirect:/admin/jeux");
+			return mav;
 		} else {
-			httpSession.setAttribute("utilisateur", utilisateurService.recupererUtilisateur(pseudo, motDePasse));
-			System.out.println("CONNEXION OK");
-			return new ModelAndView("redirect:/jeux");
+			httpSession.setAttribute("joueur", utilisateur);
+			ModelAndView mav = new ModelAndView("redirect:/avis");
+			return mav;
 		}
+
 	}
 
 	@GetMapping("/inscription")
