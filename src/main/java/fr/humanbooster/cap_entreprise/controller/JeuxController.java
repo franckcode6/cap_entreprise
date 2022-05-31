@@ -111,4 +111,12 @@ public class JeuxController {
 			throw new IOException("Erreur d'écriture : " + nom, ioe);
 		}
 	}
+	
+	// Méthode permettant de supprimer un jeu
+		@GetMapping("admin/jeux/supprimer")
+		public ModelAndView supprimerJeuGet(@RequestParam(name = "ID", required = true) Long id) {
+			jeuService.supprimerJeu(id);
+			System.out.println("Suppression du jeu à l'id " + id);
+			return new ModelAndView("redirect:/admin/jeux");
+		}
 }

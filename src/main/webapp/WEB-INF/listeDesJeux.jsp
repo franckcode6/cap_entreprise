@@ -30,7 +30,7 @@
 					<td>
 					<a class="btn btn-primary">Détails</a>
 					<a class="btn btn-warning mx-2">Modifier</a>
-					<a class="btn btn-danger">Supprimer</a>
+					<a href="jeux/supprimer?ID=${jeu.id}" class="btn btn-danger" >Supprimer</a>
 					</td>
 				</tr>
 			</c:forEach>

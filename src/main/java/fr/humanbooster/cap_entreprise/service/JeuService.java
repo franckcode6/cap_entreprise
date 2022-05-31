@@ -19,4 +19,6 @@ public interface JeuService {
 
 	List<Jeu> recupererJeux();
 
+	void supprimerJeu(Long id);
+
 }

@@ -34,4 +34,9 @@ public class JeuServiceImpl implements JeuService {
     public List<Jeu> recupererJeux() {
         return jeuDao.findAll();
     }
+
+	@Override
+	public void supprimerJeu(Long id) {
+			jeuDao.deleteById(id);
+	}
 }
