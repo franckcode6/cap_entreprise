@@ -16,9 +16,15 @@ public interface JeuService {
 	Jeu ajouterJeu(String nom, String description, LocalDate dateSortie, String image, Moderateur moderateur,
 			ModeleEconomique modeleEconomique, List<Plateforme> plateformes, Editeur editeur, Genre genre,
 			Classification classification);
+	
+	Jeu modifierJeu(Long id, String nom, String description, LocalDate dateSortie, String image, Moderateur moderateur,
+			ModeleEconomique modeleEconomique, Editeur editeur, Genre genre, Classification classification);
 
 	List<Jeu> recupererJeux();
 
+	Jeu recupererJeu(Long id);
+
 	void supprimerJeu(Long id);
+
 
 }

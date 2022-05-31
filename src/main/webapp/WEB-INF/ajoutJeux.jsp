@@ -9,22 +9,28 @@
 <title>Jeux ajout</title>
 </head>
 <body class="container">
+<c:if test="${jeu eq null}">
 <h1>Ajouter un nouveau jeu</h1>
-
+</c:if>
+<c:if test="${jeu ne null}">
+<h1>Modifier ${jeu.nom}</h1>
+</c:if>
 	<form action="" method="post" enctype="multipart/form-data" class="my-4">
+	<input type="hidden" name="id" value="${jeu.id}"><br>
+	
 	<div class="mb-3">
 		<label for="nom" class="form-label">Nom</label>
-		<input name="nom" class="form-control"><br>
+		<input name="nom" class="form-control" value="${jeu.nom}"><br>
 	</div>
 
 	<div class="mb-3">
 		<label for="description" class="form-label">Description</label>
-		<textarea name="description" class="form-control"></textarea><br>
+		<textarea name="description" class="form-control" >${jeu.description}</textarea><br>
 	</div>
 	
 	<div class="mb-3">
 		<label for="dateForm" class="form-label">Date de sortie</label>
-		<input type="date" name="dateSortie" class="form-control"><br>
+		<input type="date" name="dateSortie" class="form-control" value="${jeu.dateSortie}"><br>
 	</div>
 	
 	<div class="mb-3">
@@ -37,7 +43,7 @@
 		<select name="classification" class="form-select">
 			<option value="0">Merci de choisir une classification</option>
 			<c:forEach items="${classifications}" var="classification">
-				<option value="${classification.id}">${classification.nom}</option>
+				<option value="${classification.id}" selected="${jeu.classification.id}">${classification.nom}</option>
 			</c:forEach>
 		</select><br>
 	</div>
@@ -47,7 +53,7 @@
 		<select name="editeur" class="form-select">
 			<option value="0">Merci de choisir un éditeur</option>
 			<c:forEach items="${editeurs}" var="editeur">
-				<option value="${editeur.id}">${editeur.nom}</option>
+				<option value="${editeur.id}" selected="${jeu.editeur.id}">${editeur.nom}</option>
 			</c:forEach>
 		</select><br>
 	</div>
@@ -57,7 +63,7 @@
 		<select name="genre" class="form-select">
 			<option value="0">Merci de choisir un genre</option>
 			<c:forEach items="${genres}" var="genre">
-				<option value="${genre.id}">${genre.nom}</option>
+				<option value="${genre.id}" selected="${jeu.genre.id}">${genre.nom}</option>
 			</c:forEach>
 		</select><br>
 	</div>
@@ -67,21 +73,27 @@
 		<select name="modeleEconomique" class="form-select">
 			<option value="0">Merci de choisir un modèle économique</option>
 			<c:forEach items="${modeleEconomiques}" var="modeleEconomique">
-				<option value="${modeleEconomique.id}">${modeleEconomique.nom}</option>
+				<option value="${modeleEconomique.id}" selected="${jeu.modeleEconomique.id}">${modeleEconomique.nom}</option>
 			</c:forEach>
 		</select><br>
 	</div>
 	
+	<c:if test="${jeu eq null}">
 	<div class="mb-3">
 		<label for="plateforme_id">Plateforme(s)</label> 
 		<select name="plateformes" multiple class="form-select">
-			<option value="0">Merci de choisir une plateforme</option>
 			<c:forEach items="${plateformes}" var="plateforme">
 				<option value="${plateforme.id}">${plateforme.nom}</option>
 			</c:forEach>
 		</select><br>
 	</div>
+	</c:if>
+	<c:if test="${jeu eq null}">
 	 <input class="btn btn-success" type="submit" value="Ajouter">
+	 </c:if>
+	 <c:if test="${jeu ne null}">
+	 <input class="btn btn-warning" type="submit" value="Modifier">
+	 </c:if>
 	</form>
 </body>
 </html>

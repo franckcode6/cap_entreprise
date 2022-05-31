@@ -12,13 +12,15 @@
 </head>
 <body class="container">
 	<h1>Liste des jeux</h1>
+
+	<main class="my-5">
 	<table class="table my-4">
 		<thead class="table-dark">
 			<tr>
 				<th scope="col">Image</th>
 				<th scope="col">Nom</th>
 				<th scope="col">Editeur</th>
-				<th scope="col">Opétations</th>
+				<th scope="col">Opérations</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,12 +31,14 @@
 					<td>${jeu.editeur.nom}</td>
 					<td>
 					<a class="btn btn-primary">Détails</a>
-					<a class="btn btn-warning mx-2">Modifier</a>
-					<a href="jeux/supprimer?ID=${jeu.id}" class="btn btn-danger" >Supprimer</a>
+					<a href="jeux/ajout?id=${jeu.id}"  class="btn btn-warning mx-2">Modifier</a>
+					<a href="jeux/supprimer?id=${jeu.id}" class="btn btn-danger" >Supprimer</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<a href="jeux/ajout" class="btn btn-success">Ajouter un jeu</a>
+	</main>
 </body>
 </html>

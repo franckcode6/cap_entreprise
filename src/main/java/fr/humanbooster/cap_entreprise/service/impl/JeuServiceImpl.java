@@ -29,14 +29,37 @@ public class JeuServiceImpl implements JeuService {
 		return jeuDao.save(new Jeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes,
 				editeur, genre, classification));
 	}
-	
+
 	@Override
-    public List<Jeu> recupererJeux() {
-        return jeuDao.findAll();
-    }
+	public List<Jeu> recupererJeux() {
+		return jeuDao.findAll();
+	}
+
+	@Override
+	public Jeu recupererJeu(Long id) {
+		return jeuDao.findById(id).orElse(null);
+	}
+
+	@Override
+	public Jeu modifierJeu(Long id, String nom, String description, LocalDate dateSortie, String image,
+			Moderateur moderateur, ModeleEconomique modeleEconomique, Editeur editeur, Genre genre,
+			Classification classification) {
+		Jeu jeu = this.recupererJeu(id);
+		jeu.setNom(nom);
+		jeu.setDescription(description);
+		jeu.setDateSortie(dateSortie);
+		jeu.setImage(image);
+		jeu.setModerateur(moderateur);
+		jeu.setModeleEconomique(modeleEconomique);
+		jeu.setEditeur(editeur);
+		jeu.setGenre(genre);
+		jeu.setClassification(classification);
+		return jeuDao.save(jeu);
+	}
 
 	@Override
 	public void supprimerJeu(Long id) {
-			jeuDao.deleteById(id);
+		jeuDao.deleteById(id);
 	}
+
 }

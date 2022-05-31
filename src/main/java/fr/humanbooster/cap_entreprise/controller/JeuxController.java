@@ -59,8 +59,10 @@ public class JeuxController {
 	}
 
 	@GetMapping("/admin/jeux/ajout")
-	public ModelAndView ajoutJeuxGet() {
+	public ModelAndView ajoutJeuxGet(@RequestParam(name = "id", required = false, defaultValue = "0") Long id) {
 		ModelAndView mav = new ModelAndView();
+		
+		System.out.println(id);
 
 		mav.setViewName("ajoutJeux");
 		mav.addObject("classifications", classificationService.recupererClassifications());
@@ -68,17 +70,18 @@ public class JeuxController {
 		mav.addObject("genres", genreService.recupererGenres());
 		mav.addObject("modeleEconomiques", modeleEconomiqueService.recupererModeleEconomiques());
 		mav.addObject("plateformes", plateformeService.recupererPlateformes());
+		mav.addObject("jeu", jeuService.recupererJeu(id));
 
 		return mav;
-
 	}
 
 	@PostMapping("/admin/jeux/ajout")
-	public ModelAndView ajoutJeuxPost(@RequestParam("nom") String nom,
+	public ModelAndView ajoutJeuxPost(@RequestParam(name = "id", required = false) Long id,
+			@RequestParam("nom") String nom,
 			@RequestParam(name = "description", required = false) String description,
-			@RequestParam("dateSortie") String dateForm, @RequestParam("image") MultipartFile multipartFile,
+			@RequestParam("dateSortie") String dateForm, @RequestParam(name = "image", required = false) MultipartFile multipartFile,
 			@RequestParam("modeleEconomique") ModeleEconomique modeleEconomique,
-			@RequestParam("plateformes") List<Plateforme> plateformes, @RequestParam("editeur") Editeur editeur,
+			@RequestParam(name = "plateformes" , required = false) List<Plateforme> plateformes, @RequestParam("editeur") Editeur editeur,
 			@RequestParam("genre") Genre genre, @RequestParam("classification") Classification classification)
 			throws IOException {
 
@@ -88,10 +91,17 @@ public class JeuxController {
 
 		String image = multipartFile.getOriginalFilename();
 
-		enregistrerFichier(image, multipartFile);
+			enregistrerFichier(image, multipartFile);
 
-		jeuService.ajouterJeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes, editeur,
-				genre, classification);
+		if(id == null) {
+			
+			jeuService.ajouterJeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes, editeur,
+					genre, classification);		
+		} else {
+			jeuService.modifierJeu(id, nom, description, dateSortie, image, moderateur, modeleEconomique, editeur,
+					genre, classification);	
+		}
+		
 
 		return new ModelAndView("redirect:/admin/jeux");
 	}
@@ -114,7 +124,7 @@ public class JeuxController {
 	
 	// Méthode permettant de supprimer un jeu
 		@GetMapping("admin/jeux/supprimer")
-		public ModelAndView supprimerJeuGet(@RequestParam(name = "ID", required = true) Long id) {
+		public ModelAndView supprimerJeuGet(@RequestParam(name = "id", required = true) Long id) {
 			jeuService.supprimerJeu(id);
 			System.out.println("Suppression du jeu à l'id " + id);
 			return new ModelAndView("redirect:/admin/jeux");
