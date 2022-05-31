@@ -8,9 +8,9 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @AllArgsConstructor
-public class JeuxController {
+public class AvisController {
 
-	@GetMapping({"/jeux", "/jeux/avis"})
+	@GetMapping("/avis")
 	public ModelAndView avisGet() {
 		ModelAndView mav = new ModelAndView();
 		
