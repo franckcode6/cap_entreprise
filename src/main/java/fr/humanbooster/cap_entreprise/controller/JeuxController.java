@@ -48,8 +48,10 @@ public class JeuxController {
 	private final JeuService jeuService;
 
 	@GetMapping("/admin/jeux")
-	public ModelAndView avisGet() {
+	public ModelAndView jeuxGet() {
 		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("jeux", jeuService.recupererJeux());
 
 		mav.setViewName("listeDesJeux");
 
