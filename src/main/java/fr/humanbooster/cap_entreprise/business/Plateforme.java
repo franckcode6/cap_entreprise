@@ -30,6 +30,10 @@ public class Plateforme {
 
 	@ManyToMany
 	private List<Jeu> jeux;
+	
+	public Plateforme(String nom) {
+		this.nom = nom;
+	}
 
 	@Override
 	public String toString() {

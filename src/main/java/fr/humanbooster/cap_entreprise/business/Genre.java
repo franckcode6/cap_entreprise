@@ -28,6 +28,10 @@ public class Genre {
 
 	@OneToMany(mappedBy = "genre")
 	private List<Jeu> jeux;
+	
+	public Genre(String nom) {
+		this.nom = nom;
+	}
 
 	@Override
 	public String toString() {

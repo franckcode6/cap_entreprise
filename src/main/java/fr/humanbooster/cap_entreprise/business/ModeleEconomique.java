@@ -28,6 +28,10 @@ public class ModeleEconomique {
 
 	@OneToMany(mappedBy = "modeleEconomique")
 	private List<Jeu> jeux;
+	
+	public ModeleEconomique(String nom) {
+		this.nom = nom;
+	}
 
 	@Override
 	public String toString() {
