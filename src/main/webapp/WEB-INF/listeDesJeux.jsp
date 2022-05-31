@@ -30,7 +30,7 @@
 					<td>${jeu.nom}</td>
 					<td>${jeu.editeur.nom}</td>
 					<td>
-					<a class="btn btn-primary">Détails</a>
+					<a href="jeux/details?id=${jeu.id}" class="btn btn-primary">Détails</a>
 					<a href="jeux/ajout?id=${jeu.id}"  class="btn btn-warning mx-2">Modifier</a>
 					<a href="jeux/supprimer?id=${jeu.id}" class="btn btn-danger" >Supprimer</a>
 					</td>

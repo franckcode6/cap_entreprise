@@ -53,7 +53,7 @@
 		<select name="editeur" class="form-select">
 			<option value="0">Merci de choisir un éditeur</option>
 			<c:forEach items="${editeurs}" var="editeur">
-				<option value="${editeur.id}" selected="${jeu.editeur.id}">${editeur.nom}</option>
+				<option value="${editeur.id}" selected="${editeur.id}">${editeur.nom}</option>
 			</c:forEach>
 		</select><br>
 	</div>
