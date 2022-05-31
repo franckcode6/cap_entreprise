@@ -46,6 +46,15 @@ public class Avis {
 	@ManyToOne
 	private Jeu jeu;
 
+	public Avis(String description, LocalDateTime dateEnvoi, float note, Joueur joueur, Jeu jeu) {
+		super();
+		this.description = description;
+		this.dateEnvoi = dateEnvoi;
+		this.note = note;
+		this.joueur = joueur;
+		this.jeu = jeu;
+	}
+
 	@Override
 	public String toString() {
 		return "Avis [id=" + id + ", description=" + description + ", dateEnvoi=" + dateEnvoi + ", note=" + note
