@@ -57,8 +57,7 @@ public class Avis {
 
 	@Override
 	public String toString() {
-		return "Avis [id=" + id + ", description=" + description + ", dateEnvoi=" + dateEnvoi + ", note=" + note
-				+ ", dateModeration=" + dateModeration + "]";
+		return dateEnvoi.getDayOfMonth() + "/" + dateEnvoi.getMonthValue() + "/" + dateEnvoi.getYear();
 	}
 
 }

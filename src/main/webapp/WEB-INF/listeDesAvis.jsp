@@ -40,30 +40,31 @@
 				<th scope="col">Image</th>
 				<th scope="col">
 				<a href="avis?sort=moderateur.pseudo">
-				Pseudo du modÃ©rateur</a>
+				Pseudo du modérateur</a>
 				<a href="avis?sort=moderateur.pseudo,DESC">&#8595;</a>
 				</th>
-				<th scope="col">OpÃ©rations</th>
+				<th scope="col">Opérations</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${pages.content}" var="avis">
 				<tr>
-				    <td>${avis.dateEnvoi}</td>
+				    <td>${avis}</td>
 					<td>${avis.jeu.nom}</td>
 					<td>${avis.joueur.pseudo}</td>
 					<td>${avis.note}</td>
 					<td><img src="../images/${avis.jeu.image}" height="150"></td>
 					<td>${avis.moderateur.pseudo}</td>
 					<td>
-					<a href="avis/details?id=${avis.id}" class="btn btn-primary">DÃ©tails</a>
+					<a href="avis/details?id=${avis.id}" class="btn btn-primary">Détails</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<a href="avis/ajout" class="btn btn-success">Ajouter un avis</a>
-		<h2>
+	<a href="/deconnexion" class="btn btn-outline-dark">Déconnexion</a>
+		<h2 class = "text-center mt-5">
 		<c:if test="${!pages.first}">
 			<a href="avis?page=0&sort=${sort}">&#x23EE;</a>
 			<a href="avis?page=${pages.number-1}&sort=${sort}">&#x23EA;</a>
