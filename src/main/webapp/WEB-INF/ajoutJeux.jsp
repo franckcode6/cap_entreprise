@@ -120,6 +120,7 @@
 		<c:if test="${jeu ne null}">
 			<input class="btn btn-warning" type="submit" value="Modifier">
 		</c:if>
+		<a href="/admin/jeux" class="btn btn-secondary">Retour à la liste</a>
 	</form>
 </body>
 </html>
