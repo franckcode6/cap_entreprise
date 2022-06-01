@@ -31,7 +31,7 @@ public class Avis {
 
 	private LocalDateTime dateEnvoi;
 
-	@NotBlank
+	@NotNull
 	private float note;
 
 	private LocalDateTime dateModeration;

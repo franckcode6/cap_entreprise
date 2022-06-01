@@ -3,6 +3,8 @@ package fr.humanbooster.cap_entreprise.service.impl;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import fr.humanbooster.cap_entreprise.business.Avis;
@@ -30,12 +32,22 @@ public class AvisServiceImpl implements AvisService {
 	}
 
 	@Override
+	public List<Avis> recupererAvisModeres() {
+		return avisDao.findByModerateurIsNotNull();
+	}
+
+	@Override
 	public Avis recupererAvis(Long id) {
 		return avisDao.findById(id).orElse(null);
 	}
 
 	@Override
-	public Avis validerAvis(Long id, String description, LocalDateTime dateEnvoi, float note,
+	public Page<Avis> recupererAvis(Pageable pageable) {
+		return avisDao.findAll(pageable);
+	}
+
+	@Override
+	public Avis mettreAJourAvis(Long id, String description, LocalDateTime dateEnvoi, float note,
 			LocalDateTime dateModeration, Moderateur moderateur, Joueur joueur, Jeu jeu) {
 		Avis avis = this.recupererAvis(id);
 		avis.setDescription(description);
@@ -49,4 +61,9 @@ public class AvisServiceImpl implements AvisService {
 
 	}
 
+	@Override
+	public void supprimerAvis(Long id) {
+		avisDao.deleteById(id);
+
+	}
 }
