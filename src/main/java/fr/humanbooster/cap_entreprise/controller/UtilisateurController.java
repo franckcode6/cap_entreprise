@@ -41,10 +41,12 @@ public class UtilisateurController {
 			ModelAndView mav = new ModelAndView("redirect:/index");
 			return mav;
 		} else if (utilisateur.getPseudo().equals("franck")) {
+			httpSession.setAttribute("utilisateurConnecte", utilisateur);
 			httpSession.setAttribute("moderateur", utilisateur);
 			ModelAndView mav = new ModelAndView("redirect:/admin");
 			return mav;
 		} else {
+			httpSession.setAttribute("utilisateurConnecte", utilisateur);
 			httpSession.setAttribute("joueur", utilisateur);
 			ModelAndView mav = new ModelAndView("redirect:/avis");
 			return mav;

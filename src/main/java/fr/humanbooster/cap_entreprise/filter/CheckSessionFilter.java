@@ -16,18 +16,21 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(2) // Deuxième filtre à exécuter lorsque le serveur reçoit une requête HTTP
 public class CheckSessionFilter implements Filter {
-	
+
 	@Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
-        if (((HttpServletRequest)request).getRequestURI().startsWith("/calendrier") &&
-                ((HttpServletRequest)request).getSession().getAttribute("utilisateur")==null) {
-            System.out.println("Pas de session");
-            ((HttpServletResponse) response).sendRedirect("/index");
-        }
-        else {
-            chain.doFilter(request, response);
-        }
-    }
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		if (((HttpServletRequest) request).getRequestURI().startsWith("/admin")
+				&& ((HttpServletRequest) request).getSession().getAttribute("moderateur") == null) {
+			System.out.println("Pas de session");
+			((HttpServletResponse) response).sendRedirect("/index");
+		} else if (((HttpServletRequest) request).getRequestURI().startsWith("/avis")
+				&& (((HttpServletRequest) request).getSession().getAttribute("utilisateurConnecte")) == null) {
+			System.out.println("Pas de session");
+			((HttpServletResponse) response).sendRedirect("/index");
+		} else {
+			chain.doFilter(request, response);
+		}
+	}
 
 }
