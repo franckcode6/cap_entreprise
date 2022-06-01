@@ -11,6 +11,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +39,7 @@ import lombok.AllArgsConstructor;
 public class JeuxController {
 
 	protected final static String DOSSIER_IMAGE = "src/main/Webapp/images/";
+	private static final int NB_JEUX_PAR_PAGE = 4;
 
 	private final HttpSession httpSession;
 
@@ -48,13 +51,16 @@ public class JeuxController {
 	private final JeuService jeuService;
 
 	@GetMapping("/admin/jeux")
-	public ModelAndView jeuxGet() {
+	public ModelAndView jeuxGet(@PageableDefault(size = NB_JEUX_PAR_PAGE, sort = "id") Pageable pageable) {
 		ModelAndView mav = new ModelAndView();
-
+		
 		mav.addObject("jeux", jeuService.recupererJeux());
-
 		mav.setViewName("listeDesJeux");
-
+		mav.addObject("pageDeJeux", jeuService.recupererJeux(pageable));
+		
+		if (pageable != null) {
+			httpSession.setAttribute("numeroDePage", pageable.getPageNumber());
+		}
 		return mav;
 	}
 
@@ -125,7 +131,7 @@ public class JeuxController {
 	public ModelAndView detailsJeuGet(@RequestParam(name = "id", required = true) Long id) {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("detailsJeu");
+		mav.setViewName("detailsJeux");
 
 		mav.addObject("jeu", jeuService.recupererJeu(id));
 

@@ -3,6 +3,8 @@ package fr.humanbooster.cap_entreprise.service.impl;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import fr.humanbooster.cap_entreprise.business.Classification;
@@ -33,6 +35,11 @@ public class JeuServiceImpl implements JeuService {
 	@Override
 	public List<Jeu> recupererJeux() {
 		return jeuDao.findAll();
+	}
+	
+	@Override
+	public Page<Jeu> recupererJeux(Pageable pageable) {
+		return jeuDao.findAll(pageable);
 	}
 
 	@Override

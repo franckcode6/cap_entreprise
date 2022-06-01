@@ -18,13 +18,21 @@
 		<thead class="table-dark">
 			<tr>
 				<th scope="col">Image</th>
-				<th scope="col">Nom</th>
-				<th scope="col">Editeur</th>
+				<th scope="col">
+				<a href="jeux?sort=nom">
+				Nom</a>
+				<a href="jeux?sort=nom,DESC">&#8595;</a>
+				</th>
+				<th scope="col">
+				<a href="jeux?sort=editeur">
+				Editeur</a>
+				<a href="jeux?sort=editeur,DESC">&#8595;</a>
+				</th>
 				<th scope="col">Opérations</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${jeux}" var="jeu">
+			<c:forEach items="${pageDeJeux.content}" var="jeu">
 				<tr>
 					<th><img src="../images/${jeu.image}" height="150"></th>
 					<td>${jeu.nom}</td>
@@ -38,7 +46,21 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
 	<a href="jeux/ajout" class="btn btn-success">Ajouter un jeu</a>
+	
+	<h2 class = "text-center">
+			<c:if test="${!pageDeJeux.first}">
+				<a href="jeux?page=0&sort=${sort}">&#x23EE;</a>
+				<a href="jeux?page=${pageDeJeux.number-1}&sort=${sort}">&#x23EA;</a>
+			</c:if>
+			Page ${pageDeJeux.getNumber()+1}
+			<c:if test="${!pageDeJeux.last}">
+				<a href="jeux?page=${pageDeJeux.number+1}&sort=${sort}">&#x23E9;</a>
+				<a href="jeux?page=${pageDeJeux.totalPages - 1}&sort=${sort}">&#x23ED;</a>
+			</c:if>
+		</h2>
+	
 	</main>
 </body>
 </html>
