@@ -51,7 +51,8 @@ public class AdminController {
 	}
 
 	@GetMapping("admin/avis/aModerer")
-	public ModelAndView adminAvisAAModererGet(@PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
+	public ModelAndView adminAvisAAModererGet(
+			@PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("adminAvis");
@@ -75,7 +76,8 @@ public class AdminController {
 
 	@PostMapping("/admin/avis/moderation")
 	public ModelAndView adminModerationPost(@RequestParam(name = "id", required = true) Long id,
-			@RequestParam("description") String description, @RequestParam("note") float note, @RequestParam("jeu") Jeu jeu) {
+			@RequestParam("description") String description, @RequestParam("note") float note,
+			@RequestParam("jeu") Jeu jeu) {
 
 		Avis avis = avisService.recupererAvis(id);
 
@@ -89,4 +91,11 @@ public class AdminController {
 		return new ModelAndView("redirect:/admin/avis");
 	}
 
+	// Méthode permettant de supprimer un avis
+	@GetMapping("/admin/avis/supprimer")
+	public ModelAndView supprimerAvisGet(@RequestParam(name = "id", required = true) Long id) {
+		avisService.supprimerAvis(id);
+		System.out.println("Suppression de l'avis à l'id " + id);
+		return new ModelAndView("redirect:/admin/avis");
+	}
 }

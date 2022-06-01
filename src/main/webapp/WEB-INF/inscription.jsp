@@ -1,21 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="ISO-8859-1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <title>Inscription</title>
 </head>
-<body>
+<body class="container">
 	<h1>Inscription</h1>
-	<form action="inscription" method="post">
-		<label>Pseudo</label><input name="pseudo"><br> 
-		<label>Email</label><input type="email" name="email"><br> 
-		<label>Mot de passe</label><input type="password" name="motDePasse"><br> 
-		<label>Date de Naissance</label><input type="date" name="dateDeNaissance"><br> 
-		 <input class ="button" type="submit" value="inscription">
+	<form class="mt-5" action="inscription" method="post">
+
+		<div class="mb-3">
+			<label class="form-label">Pseudo</label> <input class="form-control"
+				name="pseudo">
+		</div>
+
+		<div class="mb-3">
+			<label class="form-label">Email</label>
+			 <input class="form-control"
+				type="email" name="email">
+		</div>
+		
+		<div class="mb-3">
+			<label class="form-label">Mot de passe</label> <input
+				class="form-control" type="password" name="motDePasse">
+		</div>
+		
+		<div class="mb-3">
+			<label class="form-label">Date de Naissance</label> <input
+				class="form-control" type="date" name="dateDeNaissance">
+		</div>
+		
+		<input class="btn btn-success" type="submit" value="Inscription">
 	</form>
 </body>
 </html>

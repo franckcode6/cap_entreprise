@@ -60,11 +60,12 @@
 					</c:if>
 					<c:if test="${avis.moderateur.pseudo eq null}">
 					<td>
-					<a href="/admin/avis/moderation?id=${avis.id}" class="btn btn-danger">Modérer</a>
+					<a href="/admin/avis/moderation?id=${avis.id}" class="btn btn-outline-danger">Modérer</a>
 					</td>
 					</c:if>
 					<td>
 					<a href="/avis/details?id=${avis.id}" class="btn btn-primary">Détails</a>
+					<a href="/admin/avis/supprimer?id=${avis.id}" class="btn btn-danger">Supprimer</a>
 					</td>
 				</tr>
 			</c:forEach>
