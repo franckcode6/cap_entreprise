@@ -97,8 +97,10 @@ public class JeuxController {
 
 		String image = multipartFile.getOriginalFilename();
 
-		enregistrerFichier(image, multipartFile);
-
+		if (image != "") {
+			enregistrerFichier(image, multipartFile);
+		}
+		
 		if (id == null) {
 
 			jeuService.ajouterJeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes,
