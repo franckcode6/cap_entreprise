@@ -49,6 +49,8 @@
 	
 	<a href="jeux/ajout" class="btn btn-success">Ajouter un jeu</a>
 	
+	<a href="jeux/export" class="btn btn-dark">Export</a>
+	
 	<a href="/admin" class="btn btn-secondary">Retour au Dashboard</a>
 	
 	<h2 class = "text-center">

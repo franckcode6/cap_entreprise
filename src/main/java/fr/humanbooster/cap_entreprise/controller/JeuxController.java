@@ -9,10 +9,12 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+
 import fr.humanbooster.cap_entreprise.business.Classification;
 import fr.humanbooster.cap_entreprise.business.Editeur;
 import fr.humanbooster.cap_entreprise.business.Genre;
+import fr.humanbooster.cap_entreprise.business.Jeu;
 import fr.humanbooster.cap_entreprise.business.ModeleEconomique;
 import fr.humanbooster.cap_entreprise.business.Moderateur;
 import fr.humanbooster.cap_entreprise.business.Plateforme;
@@ -53,11 +60,11 @@ public class JeuxController {
 	@GetMapping("/admin/jeux")
 	public ModelAndView jeuxGet(@PageableDefault(size = NB_JEUX_PAR_PAGE, sort = "id") Pageable pageable) {
 		ModelAndView mav = new ModelAndView();
-		
+
 		mav.addObject("jeux", jeuService.recupererJeux());
 		mav.setViewName("listeDesJeux");
 		mav.addObject("pageDeJeux", jeuService.recupererJeux(pageable));
-		
+
 		if (pageable != null) {
 			httpSession.setAttribute("numeroDePage", pageable.getPageNumber());
 		}
@@ -100,7 +107,7 @@ public class JeuxController {
 		if (image != "") {
 			enregistrerFichier(image, multipartFile);
 		}
-		
+
 		if (id == null) {
 
 			jeuService.ajouterJeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes,
@@ -147,4 +154,21 @@ public class JeuxController {
 		System.out.println("Suppression du jeu à l'id " + id);
 		return new ModelAndView("redirect:/admin/jeux");
 	}
+
+	@GetMapping("admin/jeux/export")
+	public void exporterJeux(HttpServletResponse response) throws Exception {
+
+		String filename = "jeux.csv";
+
+		response.setContentType("text/csv");
+		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"");
+
+		StatefulBeanToCsv<Jeu> writer = new StatefulBeanToCsvBuilder<Jeu>(response.getWriter())
+				.withQuotechar(CSVWriter.NO_QUOTE_CHARACTER).withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+				.withOrderedResults(false).build();
+
+		writer.write(jeuService.recupererJeu(1L));
+
+	}
+
 }
