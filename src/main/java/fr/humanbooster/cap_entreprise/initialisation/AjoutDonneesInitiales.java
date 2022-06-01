@@ -1,9 +1,11 @@
 package fr.humanbooster.cap_entreprise.initialisation;
 
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,7 @@ import com.github.javafaker.Faker;
 import fr.humanbooster.cap_entreprise.business.Classification;
 import fr.humanbooster.cap_entreprise.business.Editeur;
 import fr.humanbooster.cap_entreprise.business.Genre;
+import fr.humanbooster.cap_entreprise.business.Jeu;
 import fr.humanbooster.cap_entreprise.business.Joueur;
 import fr.humanbooster.cap_entreprise.business.ModeleEconomique;
 import fr.humanbooster.cap_entreprise.business.Moderateur;
@@ -20,6 +23,7 @@ import fr.humanbooster.cap_entreprise.business.Plateforme;
 import fr.humanbooster.cap_entreprise.dao.ClassificationDao;
 import fr.humanbooster.cap_entreprise.dao.EditeurDao;
 import fr.humanbooster.cap_entreprise.dao.GenreDao;
+import fr.humanbooster.cap_entreprise.dao.JeuDao;
 import fr.humanbooster.cap_entreprise.dao.JoueurDao;
 import fr.humanbooster.cap_entreprise.dao.ModeleEconomiqueDao;
 import fr.humanbooster.cap_entreprise.dao.ModerateurDao;
@@ -35,6 +39,7 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 	private final ClassificationDao classificationDao;
 	private final EditeurDao editeurDao;
 	private final GenreDao genreDao;
+	private final JeuDao jeuDao;
 	private final JoueurDao joueurDao;
 	private final ModeleEconomiqueDao modeleEconomiqueDao;
 	private final ModerateurDao moderateurDao;
@@ -43,10 +48,13 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 	private List<Classification> classifications;
 	private List<Editeur> editeurs;
 	private List<Genre> genres;
+	private List<Jeu> jeux;
 	private List<Joueur> joueurs;
 	private List<ModeleEconomique> modeleEconomiques;
 	private List<Moderateur> moderateurs;
 	private List<Plateforme> plateformes;
+	
+	private static Random random = new Random();
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -60,6 +68,7 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 
 		// GENRES
 		ajouterGenres();
+		
 
 		// ajout des joueurs
 		ajouterJoueurs();
@@ -73,6 +82,9 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 		// PLATEFORMES
 		ajouterPlateformes();
 
+		// JEUX
+		ajouterJeux();
+		
 		Date dateFin = new Date();
 		System.out.println("Données initiales générées en " + (dateFin.getTime() - dateDebut.getTime()) + " ms");
 	}
@@ -132,6 +144,34 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 			genres.add(new Genre("Battle Royal"));
 			genres.add(new Genre("Kusoge"));
 			genreDao.saveAll(genres);
+		}
+	}
+	
+	/**
+	 * Méthode d'ajout de 100 jeux avec de fausses donnees en base de
+	 * données
+	 */
+	private void ajouterJeux() {
+		if (jeuDao.count() == 0) {
+			for (int i = 1; i < 31; i++) {
+				List<Plateforme> plateformesJeu = new ArrayList<>();
+				for (int y = 1; y <= 4; y++) {
+					plateformesJeu.add(plateformes.get(random.nextInt(plateformes.size())));
+				}
+				
+				jeux.add(new Jeu("Mario " + i,
+						"description random",
+						faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+						"",
+						moderateurs.get(random.nextInt(moderateurs.size())),
+						modeleEconomiques.get(random.nextInt(modeleEconomiques.size())),
+						plateformesJeu,
+						editeurs.get(random.nextInt(editeurs.size())),
+						genres.get(random.nextInt(genres.size())),
+						classifications.get(random.nextInt(classifications.size()))
+						));
+			}
+			jeuDao.saveAll(jeux);
 		}
 	}
 
