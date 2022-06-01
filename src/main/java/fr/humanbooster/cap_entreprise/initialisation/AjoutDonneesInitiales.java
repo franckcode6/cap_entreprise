@@ -162,7 +162,7 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 				jeux.add(new Jeu("Mario " + i,
 						"description random",
 						faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-						"",
+						"565qmw2gbid81.jpg",
 						moderateurs.get(random.nextInt(moderateurs.size())),
 						modeleEconomiques.get(random.nextInt(modeleEconomiques.size())),
 						plateformesJeu,

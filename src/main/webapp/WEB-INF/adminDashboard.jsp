@@ -16,8 +16,8 @@
 		<div class="d-grid gap-2 col-6 mx-auto">
 			<a href="/admin/jeux" class="btn btn-info mb-2 text-white" type="button">Liste des jeux</a>
 			<a href="/admin/jeux/ajout" class="btn btn-success mb-2" type="button">Ajouter un jeu</a>
-			<a class="btn btn-primary mb-2" type="button">Liste des avis</a>
-			<a class="btn btn-danger mb-2" type="button">Avis à modérer</a>
+			<a href="/admin/avis" class="btn btn-primary mb-2" type="button">Liste des avis</a>
+			<a href="/admin/avis/aModerer" class="btn btn-danger mb-2" type="button">Avis à modérer</a>
 			<a href="/deconnexion" class="btn btn-secondary" type="button">Déconnexion</a>
 		</div>
 	</main>

@@ -38,7 +38,17 @@ public class AvisServiceImpl implements AvisService {
 
 	@Override
 	public Page<Avis> recupererAvisModeres(String pseudo, Pageable pageable) {
-		 return avisDao.findAllByModerateurPseudoContaining("nana", pageable);
+		return avisDao.findAllByModerateurPseudoContaining("franck", pageable);
+	}
+
+	@Override
+	public Page<Avis> recupererAvisAModerer(Pageable pageable) {
+		return avisDao.findAllByModerateurPseudoNull(pageable);
+	}
+
+	@Override
+	public Page<Avis> recupererAvis(Pageable pageable) {
+		return avisDao.findAll(pageable);
 	}
 
 	@Override
@@ -61,4 +71,5 @@ public class AvisServiceImpl implements AvisService {
 		avisDao.deleteById(id);
 
 	}
+
 }

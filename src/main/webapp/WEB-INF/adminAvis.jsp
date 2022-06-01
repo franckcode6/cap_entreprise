@@ -13,6 +13,8 @@
 <body class="container">
 	<h1>Liste des avis</h1>
 	<main class="my-5">
+<a href="/admin/avis/aModerer" class="btn btn-outline-dark ">Avis A modérer</a>
+<a href="/admin/avis" class="btn btn-outline-dark">Tous les avis</a>
 	<table class="table my-4">
 		<thead class="table-dark">
 			<tr>
@@ -46,28 +48,40 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${avis}" var="avis">
+			<c:forEach items="${pages.content}" var="avis">
 				<tr>
-				    <td>${avis.dateEnvoi}</td>
+				    <td>${avis}</td>
 					<td>${avis.jeu.nom}</td>
 					<td>${avis.joueur.pseudo}</td>
 					<td>${avis.note}</td>
-					<td><img src="../images/${avis.jeu.image}" height="150"></td>
+					<td><img src="/images/${avis.jeu.image}" height="150"></td>
 					<c:if test="${avis.moderateur.pseudo ne null}">
-					<td>${avis.moderateur.pseudo}</td>
+					<td><strong>${avis.moderateur.pseudo}</strong> </td>
 					</c:if>
 					<c:if test="${avis.moderateur.pseudo eq null}">
 					<td>
-					<a href="avis/moderation?id=${avis.id}" class="btn btn-primary">Modérer</a>
+					<a href="/admin/avis/moderation?id=${avis.id}" class="btn btn-danger">Modérer</a>
 					</td>
 					</c:if>
 					<td>
-					<a href="../avis/details?id=${avis.id}" class="btn btn-primary">Détails</a>
+					<a href="/avis/details?id=${avis.id}" class="btn btn-primary">Détails</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<a href="/admin" class="btn btn-secondary">Retour au Dashboard</a>
+			<h2 class = "text-center">
+		<c:if test="${!pages.first}">
+			<a href="avis?page=0&sort=${sort}">&#x23EE;</a>
+			<a href="avis?page=${pages.number-1}&sort=${sort}">&#x23EA;</a>
+		</c:if>
+		Page ${pages.getNumber()+1}
+		<c:if test="${!pages.last}">
+			<a href="avis?page=${pages.number+1}&sort=${sort}">&#x23E9;</a>
+			<a href="avis?page=${pages.totalPages - 1}&sort=${sort}">&#x23ED;</a>
+		</c:if>
+	</h2>
 	</main>
 </body>
 </html>

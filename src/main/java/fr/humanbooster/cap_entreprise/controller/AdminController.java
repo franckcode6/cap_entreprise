@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +28,8 @@ public class AdminController {
 
 	private final HttpSession httpSession;
 
+	private final static int NB_AVIS_PAR_PAGE = 5;
+
 	@GetMapping("/admin")
 	public ModelAndView adminGet() {
 		ModelAndView mav = new ModelAndView();
@@ -36,16 +40,28 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/avis")
-	public ModelAndView adminAvisGet() {
+	public ModelAndView adminAvisGet(@PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("adminAvis");
-		mav.addObject("avis", avisService.recupererAvis());
+
+		mav.addObject("pages", avisService.recupererAvis(pageable));
 
 		return mav;
 	}
 
-	@GetMapping("admin/avis/moderation")
+	@GetMapping("admin/avis/aModerer")
+	public ModelAndView adminAvisAAModererGet(@PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("adminAvis");
+
+		mav.addObject("pages", avisService.recupererAvisAModerer(pageable));
+
+		return mav;
+	}
+
+	@GetMapping("/admin/avis/moderation")
 	public ModelAndView adminAModerationGet(@RequestParam(name = "id", required = true) Long id) {
 		ModelAndView mav = new ModelAndView();
 
@@ -57,9 +73,9 @@ public class AdminController {
 		return mav;
 	}
 
-	@PostMapping("admin/avis/moderation")
+	@PostMapping("/admin/avis/moderation")
 	public ModelAndView adminModerationPost(@RequestParam(name = "id", required = true) Long id,
-			@RequestParam("") String description, @RequestParam("") float note, @RequestParam("") Jeu jeu) {
+			@RequestParam("description") String description, @RequestParam("note") float note, @RequestParam("jeu") Jeu jeu) {
 
 		Avis avis = avisService.recupererAvis(id);
 

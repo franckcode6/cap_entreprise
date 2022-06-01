@@ -18,11 +18,15 @@ public interface AvisService {
 	List<Avis> recupererAvis();
 
 	Avis recupererAvis(Long id);
-
+	
 	Page<Avis> recupererAvisModeres(String pseudo, Pageable pageable);
+	
+	Page<Avis> recupererAvisAModerer(Pageable pageable);
+	
+	Page<Avis> recupererAvis(Pageable pageable);
 
 	Avis mettreAJourAvis(Long id, String description, LocalDateTime dateEnvoi, float note, LocalDateTime dateModeration,
 			Moderateur moderateur, Joueur joueur, Jeu jeu);
-
+	
 	void supprimerAvis(Long id);
 }

@@ -30,5 +30,4 @@ public interface JeuService {
 	Jeu recupererJeu(Long id);
 
 	void supprimerJeu(Long id);
-
 }

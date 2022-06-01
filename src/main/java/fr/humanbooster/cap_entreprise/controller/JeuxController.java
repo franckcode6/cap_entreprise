@@ -167,8 +167,7 @@ public class JeuxController {
 				.withQuotechar(CSVWriter.NO_QUOTE_CHARACTER).withSeparator(CSVWriter.DEFAULT_SEPARATOR)
 				.withOrderedResults(false).build();
 
-		writer.write(jeuService.recupererJeu(1L));
-
+		writer.write(jeuService.recupererJeux());
 	}
 
 }
