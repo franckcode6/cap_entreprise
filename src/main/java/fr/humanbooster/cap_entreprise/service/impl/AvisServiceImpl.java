@@ -32,18 +32,13 @@ public class AvisServiceImpl implements AvisService {
 	}
 
 	@Override
-	public List<Avis> recupererAvisModeres() {
-		return avisDao.findByModerateurIsNotNull();
-	}
-
-	@Override
 	public Avis recupererAvis(Long id) {
 		return avisDao.findById(id).orElse(null);
 	}
 
 	@Override
-	public Page<Avis> recupererAvis(Pageable pageable) {
-		return avisDao.findAll(pageable);
+	public Page<Avis> recupererAvisModeres(String pseudo, Pageable pageable) {
+		 return avisDao.findAllByModerateurPseudoContaining("nana", pageable);
 	}
 
 	@Override

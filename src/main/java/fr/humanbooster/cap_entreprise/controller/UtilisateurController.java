@@ -80,12 +80,4 @@ public class UtilisateurController {
 		return new ModelAndView("redirect:/");
 	}
 
-	@GetMapping("/admin")
-	public ModelAndView adminGet() {
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("adminDashboard");
-
-		return mav;
-	}
-
 }

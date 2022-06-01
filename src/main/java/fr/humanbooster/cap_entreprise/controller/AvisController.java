@@ -36,7 +36,7 @@ public class AvisController {
 		mav.setViewName("listeDesAvis");
 
 		mav.addObject("avis", avisService.recupererAvis());
-		mav.addObject("pages", avisService.recupererAvis(pageable));
+		mav.addObject("pages", avisService.recupererAvisModeres("franck", pageable));
 
 		return mav;
 	}
