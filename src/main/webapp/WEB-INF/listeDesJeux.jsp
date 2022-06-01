@@ -49,6 +49,8 @@
 	
 	<a href="jeux/ajout" class="btn btn-success">Ajouter un jeu</a>
 	
+	<a href="/admin" class="btn btn-secondary">Retour au Dashboard</a>
+	
 	<h2 class = "text-center">
 			<c:if test="${!pageDeJeux.first}">
 				<a href="jeux?page=0&sort=${sort}">&#x23EE;</a>

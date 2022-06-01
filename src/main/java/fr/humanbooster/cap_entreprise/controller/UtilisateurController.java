@@ -42,7 +42,7 @@ public class UtilisateurController {
 			return mav;
 		} else if (utilisateur.getPseudo().equals("franck")) {
 			httpSession.setAttribute("moderateur", utilisateur);
-			ModelAndView mav = new ModelAndView("redirect:/admin/jeux");
+			ModelAndView mav = new ModelAndView("redirect:/admin");
 			return mav;
 		} else {
 			httpSession.setAttribute("joueur", utilisateur);
@@ -70,6 +70,20 @@ public class UtilisateurController {
 		utilisateurService.ajouterJoueur(pseudo, email, motDePasse, dateDeNaissance);
 
 		return new ModelAndView("redirect:index");
+	}
+	
+	@GetMapping("/deconnexion")
+	public ModelAndView deconnexionGet() {
+		httpSession.invalidate();
+		return new ModelAndView("redirect:/");
+	}
+
+	@GetMapping("/admin")
+	public ModelAndView adminGet() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("adminDashboard");
+
+		return mav;
 	}
 
 }
