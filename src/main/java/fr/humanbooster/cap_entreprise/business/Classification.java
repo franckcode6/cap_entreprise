@@ -38,7 +38,7 @@ public class Classification {
 
 	@Override
 	public String toString() {
-		return "Classification [id=" + id + ", nom=" + nom + "]";
+		return nom;
 	}
 
 }

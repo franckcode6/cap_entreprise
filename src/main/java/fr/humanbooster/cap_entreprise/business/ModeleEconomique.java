@@ -30,7 +30,7 @@ public class ModeleEconomique {
 
 	@OneToMany(mappedBy = "modeleEconomique")
 	private List<Jeu> jeux;
-	
+
 	public ModeleEconomique(String nom) {
 		super();
 		this.nom = nom;
@@ -38,7 +38,7 @@ public class ModeleEconomique {
 
 	@Override
 	public String toString() {
-		return "ModeleEconomique [id=" + id + ", nom=" + nom + "]";
+		return nom;
 	}
 
 }

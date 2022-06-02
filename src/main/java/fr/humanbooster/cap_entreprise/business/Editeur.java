@@ -30,7 +30,7 @@ public class Editeur {
 
 	@OneToMany(mappedBy = "editeur")
 	private List<Jeu> jeux;
-	
+
 	public Editeur(String nom) {
 		super();
 		this.nom = nom;
@@ -38,7 +38,7 @@ public class Editeur {
 
 	@Override
 	public String toString() {
-		return "Editeur [id=" + id + ", nom=" + nom + "]";
+		return nom;
 	}
 
 }

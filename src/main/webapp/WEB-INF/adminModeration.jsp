@@ -10,7 +10,9 @@
 	rel="stylesheet">
 <title>Modération</title>
 </head>
-<body class="container">
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+	<main class="container"> 
 	<div class="container text-center mt-5">
 		<div class="card mx-auto" style="width: 30rem">
 			<div class="card-body">
@@ -48,6 +50,7 @@
 		</div>
 		<input class="btn btn-danger" type="submit" value="Ajouter">
 	</form>
+	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

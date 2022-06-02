@@ -2,7 +2,7 @@ package fr.humanbooster.cap_entreprise.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Writer;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,8 +13,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -203,29 +201,39 @@ public class JeuxController {
 		return new ModelAndView("redirect:/admin/jeux");
 	}
 
-//	@GetMapping("admin/jeux/export")
-//	public void exporterJeux(HttpServletResponse response) throws Exception {
-//
-//		try {
-//		    // create a writer
-//		    Writer writer = Files.newBufferedWriter(Paths.get("jeux.csv"));
-//
-//		    // write CSV file
-//		    CSVPrinter printer = CSVFormat.EXCEL.print(writer);
-//
-//		    for (Jeu jeu : jeuService.recupererJeux()) {
-//				printer.printRecord(jeu.getId(), jeu.getNom());
-//			}
-//
-//		    // flush the stream
-//		    printer.flush();
-//
-//		    // close the writer
-//		    writer.close();
-//
-//		} catch (IOException ex) {
-//		    ex.printStackTrace();
-//		}
+	/**
+	 * Méthode permettant d'exporter la liste des jeux au format csv
+	 * 
+	 * @param response
+	 * @throws Exception
+	 */
+	@GetMapping("admin/jeux/export")
+	public void exporterJeux(HttpServletResponse response) throws Exception {
 
-//	}
+		// Définition du type de fichier exporté
+		response.setContentType("application/ms-excel");
+
+		// Ajout du titre
+		response.setHeader("Content-Disposition", "attachment; filename=jeux.csv");
+
+		try {
+			OutputStream out = response.getOutputStream();
+			// Mise en place des headers, correspondants à la ligne 1 du document exporté
+			String header = "Id; Nom; Description; Date de sortie; Editeur; Modele Economique; Genre; Classification"
+					+ "" + "\n";
+			out.write(header.toString().getBytes());
+			// Pour chaque jeu en BDD on affiche une information par cellule
+			// Utilisation des ";" pour gérer la séparation des données
+			for (Jeu jeu : jeuService.recupererJeux()) {
+				String line = new String(jeu.getId() + ";" + jeu.getNom() + ";" + jeu.getDescription() + ";"
+						+ jeu.getDateSortie() + ";" + jeu.getEditeur() + ";" + jeu.getModeleEconomique() + ";"
+						+ jeu.getGenre() + ";" + jeu.getClassification() + "\n");
+				out.write(line.toString().getBytes());
+			}
+			out.flush();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }
