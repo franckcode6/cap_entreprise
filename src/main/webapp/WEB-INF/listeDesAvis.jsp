@@ -17,6 +17,7 @@
 		<table class="table my-4">
 			<thead class="table-dark">
 				<tr>
+					<th>#</th>
 					<th scope="col"><a href="avis?sort=dateEnvoi"> Date
 							d'envoi</a> <a href="avis?sort=dateEnvoi,DESC">&#8595;</a></th>
 					<th scope="col"><a href="avis?sort=jeu.nom"> Nom du jeu</a> <a
@@ -33,8 +34,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${pages.content}" var="avis">
+				<c:forEach items="${pages.content}" var="avis" varStatus="compte">
 					<tr>
+						<td>${compte.count}/${pages.content.size()}</td>
 						<td>${avis}</td>
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>
