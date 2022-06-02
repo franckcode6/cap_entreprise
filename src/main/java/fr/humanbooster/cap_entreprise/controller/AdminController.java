@@ -30,6 +30,15 @@ public class AdminController {
 
 	private final static int NB_AVIS_PAR_PAGE = 5;
 
+	// TOUTES LES ROUTES DE LA CLASSE AdminController SONT ACCESSIBLES UNIQUEMENT
+	// AUX MODERATEURS
+
+	/**
+	 * URL Mapping qui nous renvoie sur la vue adminDashboard. Elle permet aux admin
+	 * d'accéder à toutes les pages dont il a besoin via plusieurs boutons
+	 * 
+	 * @return
+	 */
 	@GetMapping("/admin")
 	public ModelAndView adminGet() {
 		ModelAndView mav = new ModelAndView();
@@ -39,6 +48,14 @@ public class AdminController {
 		return mav;
 	}
 
+	/**
+	 * URL Mapping nous renvoyant sur la vue adminAvis.jsp accessible uniquement aux
+	 * modérateurs. Cette vue contient une liste de tous les avis (modérés et non
+	 * modérés) qui seront paginés
+	 * 
+	 * @param pageable
+	 * @return
+	 */
 	@GetMapping("/admin/avis")
 	public ModelAndView adminAvisGet(@PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
 		ModelAndView mav = new ModelAndView();
@@ -50,6 +67,13 @@ public class AdminController {
 		return mav;
 	}
 
+	/**
+	 * URL Mapping nous renvoyant sur la vue adminAvis.jsp. Cette vue contient une
+	 * liste des avis non modérés qui seront paginés
+	 * 
+	 * @param pageable
+	 * @return
+	 */
 	@GetMapping("admin/avis/aModerer")
 	public ModelAndView adminAvisAAModererGet(
 			@PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
@@ -62,6 +86,14 @@ public class AdminController {
 		return mav;
 	}
 
+	/**
+	 * URL mapping renvoyant sur la vue adminModeration.jsp. On récupère l'avis à
+	 * modérer afin d'en voir le détail et on récupère les jeux à placer dans le
+	 * formulaire
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/admin/avis/moderation")
 	public ModelAndView adminAModerationGet(@RequestParam(name = "id", required = true) Long id) {
 		ModelAndView mav = new ModelAndView();
@@ -74,6 +106,15 @@ public class AdminController {
 		return mav;
 	}
 
+	/**
+	 * Méthode permettant de valider l'avis à modérer
+	 * 
+	 * @param id
+	 * @param description
+	 * @param note
+	 * @param jeu
+	 * @return
+	 */
 	@PostMapping("/admin/avis/moderation")
 	public ModelAndView adminModerationPost(@RequestParam(name = "id", required = true) Long id,
 			@RequestParam("description") String description, @RequestParam("note") float note,
@@ -93,14 +134,15 @@ public class AdminController {
 
 	/**
 	 * Méthode permettant de supprimer un avis
+	 * 
 	 * @param id
 	 * @return
 	 */
 	@GetMapping("/admin/avis/supprimer")
 	public ModelAndView supprimerAvisGet(@RequestParam(name = "id", required = true) Long id) {
-		
+
 		avisService.supprimerAvis(id);
-		
+
 		return new ModelAndView("redirect:/admin/avis");
 	}
 }

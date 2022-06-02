@@ -36,16 +36,25 @@ public class AvisServiceImpl implements AvisService {
 		return avisDao.findById(id).orElse(null);
 	}
 
+	/**
+	 * On récupère les avis modérés qui seront paginés
+	 */
 	@Override
 	public Page<Avis> recupererAvisModeres(String pseudo, Pageable pageable) {
 		return avisDao.findAllByModerateurPseudoContaining("franck", pageable);
 	}
 
+	/**
+	 * On récupère les avis non modérés qui seront paginés
+	 */
 	@Override
 	public Page<Avis> recupererAvisAModerer(Pageable pageable) {
 		return avisDao.findAllByModerateurPseudoNull(pageable);
 	}
 
+	/**
+	 * On récupère la totalité des avis à paginer
+	 */
 	@Override
 	public Page<Avis> recupererAvis(Pageable pageable) {
 		return avisDao.findAll(pageable);

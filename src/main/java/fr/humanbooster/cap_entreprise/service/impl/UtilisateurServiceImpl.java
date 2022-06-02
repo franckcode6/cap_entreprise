@@ -23,6 +23,9 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 		return joueurDao.save(new Joueur(pseudo, email, motDePasse, dateDeNaissance));
 	}
 
+	/**
+	 * On récupère l'utilisateur avec son pseudo et son mot de passe (connexion)
+	 */
 	@Override
 	public Utilisateur recupererUtilisateur(String pseudo, String motDePasse) {
 		return utilisateurDao.findByPseudoAndMotDePasse(pseudo, motDePasse);

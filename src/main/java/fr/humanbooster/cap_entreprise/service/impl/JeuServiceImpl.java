@@ -37,6 +37,9 @@ public class JeuServiceImpl implements JeuService {
 		return jeuDao.findAll();
 	}
 	
+	/**
+	 * On récupère la totalité des avis à paginer
+	 */
 	@Override
 	public Page<Jeu> recupererJeux(Pageable pageable) {
 		return jeuDao.findAll(pageable);

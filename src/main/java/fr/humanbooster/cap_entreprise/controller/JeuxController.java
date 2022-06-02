@@ -55,6 +55,14 @@ public class JeuxController {
 	private final PlateformeService plateformeService;
 	private final JeuService jeuService;
 
+	/**
+	 * Url mapping qui nous renvoie sur la vue listeDesJeux.jsp On récupère tous les
+	 * jeux en base de données pour les afficher dans la vue
+	 * 
+	 * La pagination comprend 0 à 4 jeux par page.
+	 * 
+	 * @return
+	 */
 	@GetMapping("/admin/jeux")
 	public ModelAndView jeuxGet(@PageableDefault(size = NB_JEUX_PAR_PAGE, sort = "id") Pageable pageable) {
 		ModelAndView mav = new ModelAndView();
@@ -70,6 +78,12 @@ public class JeuxController {
 		return mav;
 	}
 
+	/**
+	 * Url mapping qui nous renvoie sur la vue ajoutJeux.jsp, cette vue contient le
+	 * formulaire d'ajout / modification d'un jeu
+	 * 
+	 * @return
+	 */
 	@GetMapping("/admin/jeux/ajout")
 	public ModelAndView ajoutJeuxGet(@RequestParam(name = "id", required = false, defaultValue = "0") Long id) {
 		ModelAndView mav = new ModelAndView();
@@ -86,6 +100,23 @@ public class JeuxController {
 		return mav;
 	}
 
+	/**
+	 * Méthode pour ajouter ou modifier un jeu. On téléverse l'image du jeu ajoutée
+	 * par le modérateur grâce à la méthode enregistrerFichier()
+	 * 
+	 * @param id
+	 * @param nom
+	 * @param description
+	 * @param dateForm
+	 * @param multipartFile
+	 * @param modeleEconomique
+	 * @param plateformes
+	 * @param editeur
+	 * @param genre
+	 * @param classification
+	 * @return
+	 * @throws IOException
+	 */
 	@PostMapping("/admin/jeux/ajout")
 	public ModelAndView ajoutJeuxPost(@RequestParam(name = "id", required = false) Long id,
 			@RequestParam("nom") String nom, @RequestParam(name = "description", required = false) String description,
@@ -117,6 +148,13 @@ public class JeuxController {
 		return new ModelAndView("redirect:/admin/jeux");
 	}
 
+	/**
+	 * Méthode permettant de créer le chemin du fichier image et de l'enregistrer
+	 * 
+	 * @param nom
+	 * @param multipartFile
+	 * @throws IOException
+	 */
 	protected static void enregistrerFichier(String nom, MultipartFile multipartFile) throws IOException {
 		Path chemin = Paths.get(DOSSIER_IMAGE);
 
@@ -133,6 +171,13 @@ public class JeuxController {
 		}
 	}
 
+	/**
+	 * Url mapping qui nous renvoie sur la vue detailsJeux.jsp On récupère le jeu
+	 * dont on veut voir le détail grâce à son id;
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("admin/jeux/details")
 	public ModelAndView detailsJeuGet(@RequestParam(name = "id", required = true) Long id) {
 		ModelAndView mav = new ModelAndView();
@@ -144,7 +189,12 @@ public class JeuxController {
 		return mav;
 	}
 
-	// Méthode permettant de supprimer un jeu
+	/**
+	 * Méthode permettant de supprimer un jeu
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("admin/jeux/supprimer")
 	public ModelAndView supprimerJeuGet(@RequestParam(name = "id", required = true) Long id) {
 
