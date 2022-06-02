@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +14,13 @@
 	<div class="container text-center mt-5">
 		<div class="card mx-auto" style="width: 30rem">
 			<div class="card-body">
-				<h5 class="card-title">${avis.jeu.nom}</h5><img src="/images/${avis.jeu.image}" height="150">
-				<h6 class="card-subtitle mb-2 text-muted">${avis.note}/20
-					- ${avis.description}</h6>
-				<p class="card-text">${avis.joueur.pseudo}- ${avis.dateEnvoi}</p>
-				<p class="card-text">${avis.moderateur.pseudo}- ${avis.dateModeration}</p>
+				<h5 class="card-title">${avis.jeu.nom}</h5>
+				<img src="/images/${avis.jeu.image}" height="150">
+				<h6 class="card-subtitle mb-2 text-muted">${avis.note}/20-
+					${avis.description}</h6>
+				<p class="card-text">${avis.joueur.pseudo}-${avis.dateEnvoi}</p>
+				<p class="card-text">${avis.moderateur.pseudo}-
+					${avis.dateModeration}</p>
 				<a href="admin/avis">Retour à la liste des avis</a>
 			</div>
 		</div>
@@ -46,5 +48,6 @@
 		</div>
 		<input class="btn btn-danger" type="submit" value="Ajouter">
 	</form>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -12,33 +12,33 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	
+
 	<main class="container mt-5">
-	<form class="mt-5" action="inscription" method="post">
+		<form class="mt-5" action="inscription" method="post">
 
-		<div class="mb-3">
-			<label class="form-label">Pseudo</label> <input class="form-control"
-				name="pseudo">
-		</div>
+			<div class="mb-3">
+				<label class="form-label">Pseudo</label> <input class="form-control"
+					name="pseudo">
+			</div>
 
-		<div class="mb-3">
-			<label class="form-label">Email</label>
-			 <input class="form-control"
-				type="email" name="email">
-		</div>
-		
-		<div class="mb-3">
-			<label class="form-label">Mot de passe</label> <input
-				class="form-control" type="password" name="motDePasse">
-		</div>
-		
-		<div class="mb-3">
-			<label class="form-label">Date de Naissance</label> <input
-				class="form-control" type="date" name="dateDeNaissance">
-		</div>
-		
-		<input class="btn btn-success" type="submit" value="Inscription">
-	</form>
+			<div class="mb-3">
+				<label class="form-label">Email</label> <input class="form-control"
+					type="email" name="email">
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Mot de passe</label> <input
+					class="form-control" type="password" name="motDePasse">
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label">Date de Naissance</label> <input
+					class="form-control" type="date" name="dateDeNaissance">
+			</div>
+
+			<input class="btn btn-success" type="submit" value="Inscription">
+		</form>
 	</main>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -11,18 +11,21 @@
 <title>Détails de l'avis</title>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<div class="container text-center mt-5">
 		<div class="card mx-auto" style="width: 30rem">
 			<div class="card-body">
-				<h5 class="card-title">${avis.jeu.nom}</h5><img src="../images/${avis.jeu.image}" height="150">
-				<h6 class="card-subtitle mb-2 text-muted">${avis.note}/20
-					- ${avis.description}</h6>
-				<p class="card-text">${avis.joueur.pseudo}- ${avis.dateEnvoi}</p>
-				<p class="card-text">${avis.moderateur.pseudo}- ${avis.dateModeration}</p>
+				<h5 class="card-title">${avis.jeu.nom}</h5>
+				<img src="../images/${avis.jeu.image}" height="150">
+				<h6 class="card-subtitle mb-2 text-muted">${avis.note}/20-
+					${avis.description}</h6>
+				<p class="card-text">${avis.joueur.pseudo}-${avis.dateEnvoi}</p>
+				<p class="card-text">${avis.moderateur.pseudo}-
+					${avis.dateModeration}</p>
 				<a href="/avis">Retour à la liste des avis</a>
 			</div>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

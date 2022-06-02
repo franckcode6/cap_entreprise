@@ -125,5 +125,6 @@
 			<a href="/admin/jeux" class="btn btn-secondary">Retour à la liste</a>
 		</form>
 	</main>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

@@ -64,7 +64,7 @@
 				<a href="jeux?page=${pageDeJeux.totalPages - 1}&sort=${sort}">&#x23ED;</a>
 			</c:if>
 		</h2>
-	
 	</main>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

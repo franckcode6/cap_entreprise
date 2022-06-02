@@ -11,33 +11,35 @@
 <title>TITRE</title>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container my-5">
-	<h1>Ajouter un avis</h1>
-	<form method="post" class="mt-4">
+		<h1>Ajouter un avis</h1>
+		<form method="post" class="mt-4">
 
-		<div class="mb-3">
-			<label for="description" class="form-label">Description</label>
-			<textarea name="description" class="form-control"></textarea>
-			<br>
-		</div>
+			<div class="mb-3">
+				<label for="description" class="form-label">Description</label>
+				<textarea name="description" class="form-control"></textarea>
+				<br>
+			</div>
 
-		<div class="mb-3">
-			<label class="form-label">Note</label> <input type="number"
-				step="any" placeholder="../20" name="note" class="form-control"><br>
-		</div>
+			<div class="mb-3">
+				<label class="form-label">Note</label> <input type="number"
+					step="any" placeholder="../20" name="note" class="form-control"><br>
+			</div>
 
-		<div class="mb-3">
-			<label class="form-label">Jeu</label> <select name="jeu"
-				class="form-select">
-				<c:forEach items="${jeux}" var="jeu">
-					<option value="${jeu.id}">${jeu.nom}</option>
-				</c:forEach>
-			</select><br>
-		</div>
-		<input class="btn btn-danger" type="submit" value="Ajouter">
-		<a href="/avis" class="btn btn-secondary">Retour à la liste</a>
-	</form>
+			<div class="mb-3">
+				<label class="form-label">Jeu</label> <select name="jeu"
+					class="form-select">
+					<c:forEach items="${jeux}" var="jeu">
+						<option value="${jeu.id}">${jeu.nom}</option>
+					</c:forEach>
+				</select><br>
+			</div>
+			<input class="btn btn-danger" type="submit" value="Ajouter">
+			<a href="/avis" class="btn btn-secondary">Retour à la liste</a>
+		</form>
 	</main>
+	<jsp:include page="footer.jsp"></jsp:include>
+
 </body>
 </html>

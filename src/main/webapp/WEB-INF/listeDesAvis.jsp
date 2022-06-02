@@ -13,7 +13,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container my-5">
-	<h1>Liste des avis</h1>
+		<h1>Liste des avis</h1>
 		<table class="table my-4">
 			<thead class="table-dark">
 				<tr>
@@ -38,7 +38,7 @@
 						<td>${avis}</td>
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>
-						<td>${avis.note}/ 20</td>
+						<td>${avis.note}/20</td>
 						<td><img src="../images/${avis.jeu.image}" height="150"></td>
 						<td>${avis.moderateur.pseudo}</td>
 						<td><a href="avis/details?id=${avis.id}"
@@ -61,5 +61,6 @@
 			</c:if>
 		</h2>
 	</main>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
