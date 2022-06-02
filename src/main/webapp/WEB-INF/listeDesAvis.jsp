@@ -10,71 +10,56 @@
 	rel="stylesheet">
 <title>Liste des avis</title>
 </head>
-<body class="container">
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	<main class="container my-5">
 	<h1>Liste des avis</h1>
-
-	<main class="my-5">
-	<table class="table my-4">
-		<thead class="table-dark">
-			<tr>
-				<th scope="col">
-				<a href="avis?sort=dateEnvoi">
-				Date d'envoi</a>
-				<a href="avis?sort=dateEnvoi,DESC">&#8595;</a>
-				</th>
-				<th scope="col">
-				<a href="avis?sort=jeu.nom">
-				Nom du jeu</a>
-				<a href="avis?sort=jeu.nom,DESC">&#8595;</a>
-				</th>
-				<th scope="col">
-				<a href="avis?sort=joueur.pseudo">
-				Pseudo du joueur</a>
-				<a href="avis?sort=joueur.pseudo,DESC">&#8595;</a>
-				</th>
-				<th scope="col">
-				<a href="avis?sort=note">
-				Note</a>
-				<a href="avis?sort=note,DESC">&#8595;</a>
-				</th>
-				<th scope="col">Image</th>
-				<th scope="col">
-				<a href="avis?sort=moderateur.pseudo">
-				Pseudo du modérateur</a>
-				<a href="avis?sort=moderateur.pseudo,DESC">&#8595;</a>
-				</th>
-				<th scope="col">Opérations</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${pages.content}" var="avis">
+		<table class="table my-4">
+			<thead class="table-dark">
 				<tr>
-				    <td>${avis}</td>
-					<td>${avis.jeu.nom}</td>
-					<td>${avis.joueur.pseudo}</td>
-					<td>${avis.note} / 20</td>
-					<td><img src="../images/${avis.jeu.image}" height="150"></td>
-					<td>${avis.moderateur.pseudo}</td>
-					<td>
-					<a href="avis/details?id=${avis.id}" class="btn btn-primary">Détails</a>
-					</td>
+					<th scope="col"><a href="avis?sort=dateEnvoi"> Date
+							d'envoi</a> <a href="avis?sort=dateEnvoi,DESC">&#8595;</a></th>
+					<th scope="col"><a href="avis?sort=jeu.nom"> Nom du jeu</a> <a
+						href="avis?sort=jeu.nom,DESC">&#8595;</a></th>
+					<th scope="col"><a href="avis?sort=joueur.pseudo"> Pseudo
+							du joueur</a> <a href="avis?sort=joueur.pseudo,DESC">&#8595;</a></th>
+					<th scope="col"><a href="avis?sort=note"> Note</a> <a
+						href="avis?sort=note,DESC">&#8595;</a></th>
+					<th scope="col">Image</th>
+					<th scope="col"><a href="avis?sort=moderateur.pseudo">
+							Pseudo du modérateur</a> <a href="avis?sort=moderateur.pseudo,DESC">&#8595;</a>
+					</th>
+					<th scope="col">Opérations</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<a href="avis/ajout" class="btn btn-success">Ajouter un avis</a>
-	<a href="/deconnexion" class="btn btn-outline-dark">Déconnexion</a>
-		<h2 class = "text-center mt-5">
-		<c:if test="${!pages.first}">
-			<a href="avis?page=0&sort=${sort}">&#x23EE;</a>
-			<a href="avis?page=${pages.number-1}&sort=${sort}">&#x23EA;</a>
-		</c:if>
-		Page ${pages.getNumber()+1}
-		<c:if test="${!pages.last}">
-			<a href="avis?page=${pages.number+1}&sort=${sort}">&#x23E9;</a>
-			<a href="avis?page=${pages.totalPages - 1}&sort=${sort}">&#x23ED;</a>
-		</c:if>
-	</h2>
+			</thead>
+			<tbody>
+				<c:forEach items="${pages.content}" var="avis">
+					<tr>
+						<td>${avis}</td>
+						<td>${avis.jeu.nom}</td>
+						<td>${avis.joueur.pseudo}</td>
+						<td>${avis.note}/ 20</td>
+						<td><img src="../images/${avis.jeu.image}" height="150"></td>
+						<td>${avis.moderateur.pseudo}</td>
+						<td><a href="avis/details?id=${avis.id}"
+							class="btn btn-primary">Détails</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<a href="avis/ajout" class="btn btn-success">Ajouter un avis</a> <a
+			href="/deconnexion" class="btn btn-outline-dark">Déconnexion</a>
+		<h2 class="text-center mt-5">
+			<c:if test="${!pages.first}">
+				<a href="avis?page=0&sort=${sort}">&#x23EE;</a>
+				<a href="avis?page=${pages.number-1}&sort=${sort}">&#x23EA;</a>
+			</c:if>
+			Page ${pages.getNumber()+1}
+			<c:if test="${!pages.last}">
+				<a href="avis?page=${pages.number+1}&sort=${sort}">&#x23E9;</a>
+				<a href="avis?page=${pages.totalPages - 1}&sort=${sort}">&#x23ED;</a>
+			</c:if>
+		</h2>
 	</main>
 </body>
 </html>

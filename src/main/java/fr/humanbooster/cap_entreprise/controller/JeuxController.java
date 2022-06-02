@@ -2,6 +2,7 @@ package fr.humanbooster.cap_entreprise.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,19 +13,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.opencsv.CSVWriter;
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
 
 import fr.humanbooster.cap_entreprise.business.Classification;
 import fr.humanbooster.cap_entreprise.business.Editeur;
@@ -149,25 +147,35 @@ public class JeuxController {
 	// Méthode permettant de supprimer un jeu
 	@GetMapping("admin/jeux/supprimer")
 	public ModelAndView supprimerJeuGet(@RequestParam(name = "id", required = true) Long id) {
-		
+
 		jeuService.supprimerJeu(id);
-		
+
 		return new ModelAndView("redirect:/admin/jeux");
 	}
 
-	@GetMapping("admin/jeux/export")
-	public void exporterJeux(HttpServletResponse response) throws Exception {
+//	@GetMapping("admin/jeux/export")
+//	public void exporterJeux(HttpServletResponse response) throws Exception {
+//
+//		try {
+//		    // create a writer
+//		    Writer writer = Files.newBufferedWriter(Paths.get("jeux.csv"));
+//
+//		    // write CSV file
+//		    CSVPrinter printer = CSVFormat.EXCEL.print(writer);
+//
+//		    for (Jeu jeu : jeuService.recupererJeux()) {
+//				printer.printRecord(jeu.getId(), jeu.getNom());
+//			}
+//
+//		    // flush the stream
+//		    printer.flush();
+//
+//		    // close the writer
+//		    writer.close();
+//
+//		} catch (IOException ex) {
+//		    ex.printStackTrace();
+//		}
 
-		String filename = "jeux.csv";
-
-		response.setContentType("text/csv");
-		response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"");
-
-		StatefulBeanToCsv<Jeu> writer = new StatefulBeanToCsvBuilder<Jeu>(response.getWriter())
-				.withQuotechar(CSVWriter.NO_QUOTE_CHARACTER).withSeparator(CSVWriter.DEFAULT_SEPARATOR)
-				.withOrderedResults(false).build();
-
-		writer.write(jeuService.recupererJeux());
-	}
-
+//	}
 }

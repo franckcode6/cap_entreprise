@@ -10,9 +10,10 @@
 	rel="stylesheet">
 <title>Dashboard</title>
 </head>
-<body class="container">
-	<h1>Dashboard</h1>
-	<main class="mt-5">
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	
+	<main class="container mt-5">
 		<div class="d-grid gap-2 col-6 mx-auto">
 			<a href="/admin/jeux" class="btn btn-info mb-2 text-white" type="button">Liste des jeux</a>
 			<a href="/admin/jeux/ajout" class="btn btn-success mb-2" type="button">Ajouter un jeu</a>

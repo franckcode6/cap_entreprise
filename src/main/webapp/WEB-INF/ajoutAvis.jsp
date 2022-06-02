@@ -10,7 +10,9 @@
 	rel="stylesheet">
 <title>TITRE</title>
 </head>
-<body class="container">
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+	<main class="container my-5">
 	<h1>Ajouter un avis</h1>
 	<form method="post" class="mt-4">
 
@@ -36,5 +38,6 @@
 		<input class="btn btn-danger" type="submit" value="Ajouter">
 		<a href="/avis" class="btn btn-secondary">Retour à la liste</a>
 	</form>
+	</main>
 </body>
 </html>

@@ -10,9 +10,10 @@
 	rel="stylesheet">
 <title>Liste des avis</title>
 </head>
-<body class="container">
+<body>
+<jsp:include page="header.jsp"></jsp:include>
+	<main class="container my-5">
 	<h1>Liste des avis</h1>
-	<main class="my-5">
 <a href="/admin/avis/aModerer" class="btn btn-outline-dark ">Avis A modérer</a>
 <a href="/admin/avis" class="btn btn-outline-dark">Tous les avis</a>
 	<table class="table my-4">

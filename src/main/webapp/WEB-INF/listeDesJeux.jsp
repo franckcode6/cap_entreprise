@@ -10,11 +10,11 @@
 	rel="stylesheet">
 <title>Liste des jeux</title>
 </head>
-<body class="container">
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	<main class="container my-2">
 	<h1>Liste des jeux</h1>
-
-	<main class="my-5">
-	<table class="table my-4">
+	<table class="table my-3">
 		<thead class="table-dark">
 			<tr>
 				<th scope="col">Image</th>

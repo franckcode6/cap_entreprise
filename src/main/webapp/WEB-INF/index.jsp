@@ -8,8 +8,10 @@
 <meta charset="ISO-8859-1">
 <title>Avis</title>
 </head>
-<body class="container">
-	<h1>Avis</h1>
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	
+	<main class="container mt-5">
 	<c:if test="${param.notification ne null}">
 		<h2>${param.notification}</h2>
 	</c:if>
@@ -30,5 +32,6 @@
 			<a class="btn btn-dark" href="inscription">S'inscrire</a>
 		</div>
 	</form>
+	</main>
 </body>
 </html>

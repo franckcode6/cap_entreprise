@@ -10,8 +10,10 @@
 	rel="stylesheet">
 <title>Inscription</title>
 </head>
-<body class="container">
-	<h1>Inscription</h1>
+<body>
+	<jsp:include page="header.jsp"></jsp:include>
+	
+	<main class="container mt-5">
 	<form class="mt-5" action="inscription" method="post">
 
 		<div class="mb-3">
@@ -37,5 +39,6 @@
 		
 		<input class="btn btn-success" type="submit" value="Inscription">
 	</form>
+	</main>
 </body>
 </html>

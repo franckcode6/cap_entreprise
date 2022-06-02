@@ -11,6 +11,7 @@
 <title>Détails de l'avis</title>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<div class="container text-center mt-5">
 		<div class="card mx-auto" style="width: 30rem">
 			<div class="card-body">
