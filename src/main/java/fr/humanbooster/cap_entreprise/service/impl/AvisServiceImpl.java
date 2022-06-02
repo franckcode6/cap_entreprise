@@ -37,6 +37,15 @@ public class AvisServiceImpl implements AvisService {
 	}
 
 	/**
+	 * Méthode permettant de retrouver tous les avis modérés et les avis non modérés
+	 * du joueur en session que l'on va paginer
+	 */
+	@Override
+	public Page<Avis> recupererAvisJoueurs(String pseudoModo, String pseudoJoueur, Pageable pageable) {
+		return avisDao.findAllByModerateurPseudoContainingOrJoueurPseudoContaining(pseudoModo, pseudoJoueur, pageable);
+	}
+
+	/**
 	 * On récupère les avis modérés qui seront paginés
 	 */
 	@Override

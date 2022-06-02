@@ -33,9 +33,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${pages.content}" var="avis">
+				<c:forEach items="${pages.content}" var="avis" varStatus="compte">
 					<tr>
-						<td>${avis}</td>
+						<td>${compte.index}</td>
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>
 						<td>${avis.note}/20</td>

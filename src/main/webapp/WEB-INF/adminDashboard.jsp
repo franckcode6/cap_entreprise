@@ -20,8 +20,9 @@
 				class="btn btn-success mb-2" type="button">Ajouter un jeu</a> <a
 				href="/admin/avis" class="btn btn-primary mb-2" type="button">Liste
 				des avis</a> <a href="/admin/avis/aModerer" class="btn btn-danger mb-2"
-				type="button">Avis à modérer</a> <a href="/deconnexion"
-				class="btn btn-secondary" type="button">Déconnexion</a>
+				type="button">Avis à modérer</a> <a href="/admin/avis/moderes"
+				class="btn btn-dark mb-2" type="button">Avis modérés</a> <a
+				href="/deconnexion" class="btn btn-secondary" type="button">Déconnexion</a>
 		</div>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>

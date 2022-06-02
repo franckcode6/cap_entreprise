@@ -16,4 +16,10 @@ public interface AvisDao extends JpaRepository<Avis, Long> {
 	// été modéré et que l'on va paginer
 	Page<Avis> findAllByModerateurPseudoNull(Pageable pageable);
 
+	// requète par dérivation qui nous permet de retrouver les avis qui ont été
+	// modérés et uniquement les avis non modérés du joueur en session que l'on va
+	// paginer
+	Page<Avis> findAllByModerateurPseudoContainingOrJoueurPseudoContaining(String pseudoModo, String pseudoJoueur,
+			Pageable pageable);
+
 }

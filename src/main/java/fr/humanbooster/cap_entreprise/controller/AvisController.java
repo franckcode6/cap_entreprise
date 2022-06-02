@@ -31,7 +31,8 @@ public class AvisController {
 
 	/**
 	 * URL mappinng qui nous renvoie sur la vue listeDesAvis.jsp On récupère les
-	 * avis qui ont été modérés et qui seront paginés
+	 * avis qui ont été modérés et les avis non modérés du joueur en session qui
+	 * seront paginés
 	 * 
 	 * @param pageable
 	 * @return
@@ -42,8 +43,9 @@ public class AvisController {
 
 		mav.setViewName("listeDesAvis");
 
-		mav.addObject("avis", avisService.recupererAvis());
-		mav.addObject("pages", avisService.recupererAvisModeres("franck", pageable));
+		Joueur joueur = (Joueur) httpSession.getAttribute("joueur");
+
+		mav.addObject("pages", avisService.recupererAvisJoueurs("nana", joueur.getPseudo(), pageable));
 
 		return mav;
 	}

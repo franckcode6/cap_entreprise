@@ -18,6 +18,8 @@ public interface AvisService {
 	List<Avis> recupererAvis();
 
 	Avis recupererAvis(Long id);
+	
+	Page<Avis> recupererAvisJoueurs(String pseudoModo, String pseudoJoueur, Pageable pageable);
 
 	Page<Avis> recupererAvisModeres(String pseudo, Pageable pageable);
 

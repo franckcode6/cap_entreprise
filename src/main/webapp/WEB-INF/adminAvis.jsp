@@ -15,7 +15,8 @@
 	<main class="container my-5">
 		<h1>Liste des avis</h1>
 		<a href="/admin/avis/aModerer" class="btn btn-outline-dark ">Avis
-			A modérer</a> <a href="/admin/avis" class="btn btn-outline-dark">Tous
+			A modérer</a> <a href="/admin/avis/moderes" class="btn btn-outline-dark ">Avis
+			modérés</a> <a href="/admin/avis" class="btn btn-outline-dark">Tous
 			les avis</a>
 		<table class="table my-4">
 			<thead class="table-dark">

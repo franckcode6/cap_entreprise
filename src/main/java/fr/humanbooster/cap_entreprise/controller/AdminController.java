@@ -85,6 +85,25 @@ public class AdminController {
 
 		return mav;
 	}
+	
+	 /**
+     * URL Mapping nous renvoyant sur la vue adminAvis.jsp. Cette vue contient une
+     * liste des avis modérés qui seront paginés
+     * 
+     * @param pageable
+     * @return
+     */
+    @GetMapping("admin/avis/moderes")
+    public ModelAndView adminAvisModeresGet(
+            @PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
+        ModelAndView mav = new ModelAndView();
+        
+        mav.setViewName("adminAvis");
+        
+        mav.addObject("pages", avisService.recupererAvisModeres("nana", pageable));
+        
+        return mav;
+    }
 
 	/**
 	 * URL mapping renvoyant sur la vue adminModeration.jsp. On récupère l'avis à
