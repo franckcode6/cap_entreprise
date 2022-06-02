@@ -76,7 +76,9 @@ public class UtilisateurController {
 	
 	@GetMapping("/deconnexion")
 	public ModelAndView deconnexionGet() {
+		
 		httpSession.invalidate();
+		
 		return new ModelAndView("redirect:/");
 	}
 

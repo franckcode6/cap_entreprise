@@ -32,6 +32,7 @@ public class Editeur {
 	private List<Jeu> jeux;
 	
 	public Editeur(String nom) {
+		super();
 		this.nom = nom;
 	}
 

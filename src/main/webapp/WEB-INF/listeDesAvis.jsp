@@ -52,7 +52,7 @@
 				    <td>${avis}</td>
 					<td>${avis.jeu.nom}</td>
 					<td>${avis.joueur.pseudo}</td>
-					<td>${avis.note}</td>
+					<td>${avis.note} / 20</td>
 					<td><img src="../images/${avis.jeu.image}" height="150"></td>
 					<td>${avis.moderateur.pseudo}</td>
 					<td>

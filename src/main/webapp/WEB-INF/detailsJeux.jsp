@@ -15,6 +15,7 @@
 		<div class="card mx-auto" style="width: 30rem">
 			<div class="card-body">
 				<h5 class="card-title">${jeu.nom}- ${jeu.editeur.nom}</h5>
+				<img src="/images/${jeu.image}" height="150">
 				<h6 class="card-subtitle mb-2 text-muted">${jeu.modeleEconomique.nom}
 					- ${jeu.classification.nom}</h6>
 				<p class="card-text">${jeu.description}</p>

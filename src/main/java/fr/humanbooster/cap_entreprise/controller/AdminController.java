@@ -85,17 +85,22 @@ public class AdminController {
 
 		Moderateur moderateur = (Moderateur) httpSession.getAttribute("moderateur");
 
-		avisService.mettreAJourAvis(id, description, avis.getDateEnvoi(), note, dateModeration, moderateur,
+		avisService.validerAvis(id, description, avis.getDateEnvoi(), note, dateModeration, moderateur,
 				avis.getJoueur(), avis.getJeu());
 
 		return new ModelAndView("redirect:/admin/avis");
 	}
 
-	// Méthode permettant de supprimer un avis
+	/**
+	 * Méthode permettant de supprimer un avis
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/admin/avis/supprimer")
 	public ModelAndView supprimerAvisGet(@RequestParam(name = "id", required = true) Long id) {
+		
 		avisService.supprimerAvis(id);
-		System.out.println("Suppression de l'avis à l'id " + id);
+		
 		return new ModelAndView("redirect:/admin/avis");
 	}
 }

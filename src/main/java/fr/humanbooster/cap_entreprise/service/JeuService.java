@@ -20,14 +20,14 @@ public interface JeuService {
 			ModeleEconomique modeleEconomique, List<Plateforme> plateformes, Editeur editeur, Genre genre,
 			Classification classification);
 
-	Jeu modifierJeu(Long id, String nom, String description, LocalDate dateSortie, String image, Moderateur moderateur,
-			ModeleEconomique modeleEconomique, Editeur editeur, Genre genre, Classification classification);
-
 	List<Jeu> recupererJeux();
 
 	Page<Jeu> recupererJeux(Pageable pageable);
 
 	Jeu recupererJeu(Long id);
+
+	Jeu modifierJeu(Long id, String nom, String description, LocalDate dateSortie, String image, Moderateur moderateur,
+			ModeleEconomique modeleEconomique, Editeur editeur, Genre genre, Classification classification);
 
 	void supprimerJeu(Long id);
 }

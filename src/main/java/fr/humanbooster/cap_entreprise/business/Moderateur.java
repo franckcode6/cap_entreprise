@@ -17,11 +17,11 @@ import lombok.NoArgsConstructor;
 public class Moderateur extends Utilisateur {
 
 	@NotBlank
-	private String numéroDeTelephone;
+	private String numeroDeTelephone;
 
-	public Moderateur(String pseudo, String email, String motDePasse, String numéroDeTelephone) {
+	public Moderateur(String pseudo, String email, String motDePasse, String numeroDeTelephone) {
 		super(pseudo, email, motDePasse);
-		this.numéroDeTelephone = numéroDeTelephone;
+		this.numeroDeTelephone = numeroDeTelephone;
 	}
 
 }

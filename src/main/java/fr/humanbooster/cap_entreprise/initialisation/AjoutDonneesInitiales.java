@@ -69,7 +69,6 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
 		// GENRES
 		ajouterGenres();
 		
-
 		// ajout des joueurs
 		ajouterJoueurs();
 

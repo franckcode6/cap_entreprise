@@ -61,8 +61,9 @@ public class JeuxController {
 	public ModelAndView jeuxGet(@PageableDefault(size = NB_JEUX_PAR_PAGE, sort = "id") Pageable pageable) {
 		ModelAndView mav = new ModelAndView();
 
-		mav.addObject("jeux", jeuService.recupererJeux());
 		mav.setViewName("listeDesJeux");
+
+		mav.addObject("jeux", jeuService.recupererJeux());
 		mav.addObject("pageDeJeux", jeuService.recupererJeux(pageable));
 
 		if (pageable != null) {
@@ -75,9 +76,8 @@ public class JeuxController {
 	public ModelAndView ajoutJeuxGet(@RequestParam(name = "id", required = false, defaultValue = "0") Long id) {
 		ModelAndView mav = new ModelAndView();
 
-		System.out.println(id);
-
 		mav.setViewName("ajoutJeux");
+
 		mav.addObject("classifications", classificationService.recupererClassifications());
 		mav.addObject("editeurs", editeurService.recupererEditeurs());
 		mav.addObject("genres", genreService.recupererGenres());
@@ -109,7 +109,6 @@ public class JeuxController {
 		}
 
 		if (id == null) {
-
 			jeuService.ajouterJeu(nom, description, dateSortie, image, moderateur, modeleEconomique, plateformes,
 					editeur, genre, classification);
 		} else {
@@ -150,8 +149,9 @@ public class JeuxController {
 	// Méthode permettant de supprimer un jeu
 	@GetMapping("admin/jeux/supprimer")
 	public ModelAndView supprimerJeuGet(@RequestParam(name = "id", required = true) Long id) {
+		
 		jeuService.supprimerJeu(id);
-		System.out.println("Suppression du jeu à l'id " + id);
+		
 		return new ModelAndView("redirect:/admin/jeux");
 	}
 

@@ -32,6 +32,7 @@ public class Plateforme {
 	private List<Jeu> jeux;
 	
 	public Plateforme(String nom) {
+		super();
 		this.nom = nom;
 	}
 

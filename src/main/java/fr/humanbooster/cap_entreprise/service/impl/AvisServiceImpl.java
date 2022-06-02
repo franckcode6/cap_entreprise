@@ -52,7 +52,7 @@ public class AvisServiceImpl implements AvisService {
 	}
 
 	@Override
-	public Avis mettreAJourAvis(Long id, String description, LocalDateTime dateEnvoi, float note,
+	public Avis validerAvis(Long id, String description, LocalDateTime dateEnvoi, float note,
 			LocalDateTime dateModeration, Moderateur moderateur, Joueur joueur, Jeu jeu) {
 		Avis avis = this.recupererAvis(id);
 		avis.setDescription(description);

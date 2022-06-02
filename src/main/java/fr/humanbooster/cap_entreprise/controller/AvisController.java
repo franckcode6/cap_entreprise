@@ -46,6 +46,7 @@ public class AvisController {
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("ajoutAvis");
+
 		mav.addObject("jeux", jeuService.recupererJeux());
 
 		return mav;
@@ -58,9 +59,6 @@ public class AvisController {
 		LocalDateTime dateEnvoi = LocalDateTime.now();
 
 		Joueur joueur = (Joueur) httpSession.getAttribute("joueur");
-
-		System.out.println("desc: " + description + " note: " + note + " jeu: " + jeu + " date: " + dateEnvoi
-				+ " joueur: " + joueur);
 
 		avisService.ajouterAvis(description, dateEnvoi, note, joueur, jeu);
 
@@ -76,6 +74,5 @@ public class AvisController {
 		mav.addObject("avis", avisService.recupererAvis(id));
 
 		return mav;
-
 	}
 }
