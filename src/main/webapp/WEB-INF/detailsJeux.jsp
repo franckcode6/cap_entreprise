@@ -20,7 +20,12 @@
 				<h6 class="card-subtitle mb-2 text-muted">${jeu.modeleEconomique.nom}
 					- ${jeu.classification.nom}</h6>
 				<p class="card-text">${jeu.description}</p>
-				<a href="/admin/jeux">Retour à la liste des jeux</a>
+				  <c:if test="${sessionScope.utilisateurConnecte.pseudo ne 'franck'}">
+                <a href="/avis">Retour à la liste des avis</a>
+                </c:if>
+                <c:if test="${sessionScope.utilisateurConnecte.pseudo eq 'franck'}">
+                <a href="/admin/jeux">Retour à la liste des jeux</a>
+                </c:if>
 			</div>
 		</div>
 	</div>

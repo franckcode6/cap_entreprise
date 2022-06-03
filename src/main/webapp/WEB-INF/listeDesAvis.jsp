@@ -36,7 +36,7 @@
 			<tbody>
 				<c:forEach items="${pages.content}" var="avis" varStatus="compte">
 					<tr>
-						<td>${compte.count}/${pages.content.size()}</td>
+						<th scope="row">${compte.count}/${pages.content.size()}</th>
 						<td>${avis}</td>
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>
@@ -49,7 +49,8 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="avis/ajout" class="btn btn-success">Ajouter un avis</a> <a
+		<c:if test="${sessionScope.utilisateurConnecte.pseudo ne 'franck' }">
+		<a href="avis/ajout" class="btn btn-success">Ajouter un avis</a></c:if> <a
 			href="/deconnexion" class="btn btn-outline-dark">Déconnexion</a>
 		<h2 class="text-center mt-5">
 			<c:if test="${!pages.first}">

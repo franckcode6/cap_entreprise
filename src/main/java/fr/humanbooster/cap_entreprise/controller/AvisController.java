@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.humanbooster.cap_entreprise.business.Jeu;
 import fr.humanbooster.cap_entreprise.business.Joueur;
+import fr.humanbooster.cap_entreprise.business.Utilisateur;
 import fr.humanbooster.cap_entreprise.service.AvisService;
 import fr.humanbooster.cap_entreprise.service.JeuService;
 import lombok.AllArgsConstructor;
@@ -43,9 +44,9 @@ public class AvisController {
 
 		mav.setViewName("listeDesAvis");
 
-		Joueur joueur = (Joueur) httpSession.getAttribute("joueur");
+		Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateurConnecte");
 
-		mav.addObject("pages", avisService.recupererAvisJoueurs("nana", joueur.getPseudo(), pageable));
+		mav.addObject("pages", avisService.recupererAvisJoueurs("franck", utilisateur.getPseudo(), pageable));
 
 		return mav;
 	}
@@ -106,4 +107,25 @@ public class AvisController {
 
 		return mav;
 	}
+	
+	 /**
+     * Url mapping qui nous renvoie sur la vue detailsJeux.jsp sur une route
+     * accessible aux joueurs On récupère le jeu dont on veut voir le détail grâce à
+     * son id;
+     * 
+     * @param id
+     * @return
+     */
+    @GetMapping("avis/jeux/details")
+    public ModelAndView avisdetailsJeuGet(@RequestParam(name = "id", required = true) Long id) {
+        ModelAndView mav = new ModelAndView();
+
+        mav.setViewName("detailsJeux");
+
+        mav.addObject("jeu", jeuService.recupererJeu(id));
+
+        httpSession.getAttribute("utilisateurConnecte");
+
+        return mav;
+    }
 }

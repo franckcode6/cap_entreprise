@@ -40,7 +40,7 @@
 			<tbody>
 				<c:forEach items="${pages.content}" var="avis" varStatus="compte">
 					<tr>
-						<td>${compte.count}/${pages.content.size()}</td>
+						<th scope="row">${compte.count}/${pages.content.size()}</th>
 						<td>${avis}</td>
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>

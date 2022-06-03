@@ -100,7 +100,7 @@ public class AdminController {
         
         mav.setViewName("adminAvis");
         
-        mav.addObject("pages", avisService.recupererAvisModeres("nana", pageable));
+        mav.addObject("pages", avisService.recupererAvisModeres("franck", pageable));
         
         return mav;
     }
