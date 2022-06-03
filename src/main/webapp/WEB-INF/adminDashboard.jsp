@@ -13,7 +13,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 
-	<main class="container mt-5">
+	<main class="container mt-5 min-vh-100">
 		<div class="d-grid gap-2 col-6 mx-auto">
 			<a href="/admin/jeux" class="btn btn-info mb-2 text-white"
 				type="button">Liste des jeux</a> <a href="/admin/jeux/ajout"

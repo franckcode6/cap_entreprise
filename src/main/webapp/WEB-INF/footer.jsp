@@ -2,11 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <!-- Footer -->
-<footer class="bg-dark text-center text-white">
+<footer class="bg-dark text-center text-white sticky-bottom">
   <!-- Grid container -->
   <div class="container p-4">
     <!-- Section: Social media -->
-    <section class="mb-4">
+    <section>
       <!-- Steam -->
     <a href= "https://store.steampowered.com/?l=french"> <button type="button" class="btn btn-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-steam" viewBox="0 0 16 16">
@@ -48,17 +48,17 @@
      
      
      
-    </section>
-    <!-- Section: Social media -->
+<!--     </section> -->
+<!--     Section: Social media -->
     
-    <!-- Section: Text -->
-    <section class="mb-4">
-      <p class="text-uppercase text-center fs-3 fw-bold">
-          Projet cap entreprise groupe 6 : 
-         	Jeanne, Franck et Laurent
-      </p>
-    </section>
-    <!-- Section: Text -->
+<!--     Section: Text -->
+<!--     <section class="mb-4"> -->
+<!--       <p class="text-uppercase text-center fs-3 fw-bold"> -->
+<!--           Projet cap entreprise groupe 6 :  -->
+<!--          	Jeanne, Franck et Laurent -->
+<!--       </p> -->
+<!--     </section> -->
+<!--     Section: Text -->
 
  
   </div>

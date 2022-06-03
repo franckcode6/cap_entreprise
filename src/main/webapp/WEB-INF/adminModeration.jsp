@@ -12,7 +12,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<main class="container">
+	<main class="container min-vh-100">
 		<div class="container text-center mt-5">
 			<div class="card mx-auto" style="width: 30rem">
 				<div class="card-body">

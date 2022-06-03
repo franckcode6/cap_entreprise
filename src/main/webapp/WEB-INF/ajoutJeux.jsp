@@ -12,7 +12,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<main class="container my-5">
+	<main class="container my-5 min-vh-100">
 		<c:if test="${jeu eq null}">
 			<h1>Ajouter un nouveau jeu</h1>
 		</c:if>

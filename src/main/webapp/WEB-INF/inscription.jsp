@@ -13,7 +13,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 
-	<main class="container mt-5">
+	<main class="container mt-5 min-vh-100">
 		<form class="mt-5" action="inscription" method="post">
 
 			<div class="mb-3">

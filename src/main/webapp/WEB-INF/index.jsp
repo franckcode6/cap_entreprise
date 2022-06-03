@@ -8,7 +8,7 @@
 
 <body >
 	<jsp:include page="header.jsp"></jsp:include>
-<main class="container"> 
+<main class="container min-vh-100"> 
 	<c:if test="${param.notification ne null}">
 		<h2>${param.notification}</h2>
 	</c:if>

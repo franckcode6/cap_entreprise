@@ -12,7 +12,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<main class="container my-5">
+	<main class="container my-5 min-vh-100">
 		<h1>Liste des avis</h1>
 		<table class="table my-4">
 			<thead class="table-dark">
