@@ -10,11 +10,14 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * Filtre à exécuter lorsque le serveur reçoit une requête HTTP
+ * @author Franck
+ *
+ */
 @Component
-@Order(2) // Deuxième filtre à exécuter lorsque le serveur reçoit une requête HTTP
 public class CheckSessionFilter implements Filter {
 
 	@Override
@@ -23,11 +26,11 @@ public class CheckSessionFilter implements Filter {
 		if (((HttpServletRequest) request).getRequestURI().startsWith("/admin")
 				&& ((HttpServletRequest) request).getSession().getAttribute("moderateur") == null) {
 			System.out.println("Pas de session");
-			((HttpServletResponse) response).sendRedirect("/index");
+			((HttpServletResponse) response).sendRedirect("/");
 		} else if (((HttpServletRequest) request).getRequestURI().startsWith("/avis")
 				&& (((HttpServletRequest) request).getSession().getAttribute("utilisateurConnecte")) == null) {
 			System.out.println("Pas de session");
-			((HttpServletResponse) response).sendRedirect("/index");
+			((HttpServletResponse) response).sendRedirect("/");
 		} else {
 			chain.doFilter(request, response);
 		}

@@ -81,7 +81,6 @@ public class AvisServiceImpl implements AvisService {
 		avis.setJoueur(joueur);
 		avis.setJeu(jeu);
 		return avisDao.save(avis);
-
 	}
 
 	@Override

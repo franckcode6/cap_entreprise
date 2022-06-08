@@ -27,11 +27,11 @@ public class UtilisateurController {
 	 * 
 	 * @return
 	 */
-	@GetMapping({ "/index", "/" })
+	@GetMapping({ "/" })
 	public ModelAndView connexionGet() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("index");
+		mav.setViewName("connexion");
 
 		return mav;
 	}
@@ -47,7 +47,7 @@ public class UtilisateurController {
 	 * @param motDePasse
 	 * @return
 	 */
-	@PostMapping({ "/index", "/" })
+	@PostMapping({ "/" })
 	public ModelAndView connexionPost(@RequestParam("pseudo") String pseudo,
 			@RequestParam("motDePasse") String motDePasse) {
 
@@ -55,7 +55,7 @@ public class UtilisateurController {
 		System.out.println("utilisateur: " + utilisateur);
 
 		if (utilisateur == null) {
-			ModelAndView mav = new ModelAndView("redirect:/index");
+			ModelAndView mav = new ModelAndView("redirect:/");
 			return mav;
 		} else if (utilisateur.getPseudo().equals("franck")) {
 			httpSession.setAttribute("utilisateurConnecte", utilisateur);
@@ -81,7 +81,7 @@ public class UtilisateurController {
 	public ModelAndView inscriptionGet() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("inscription");
+		mav.setViewName("inscriptionJoueur");
 
 		return mav;
 	}
@@ -103,7 +103,7 @@ public class UtilisateurController {
 
 		utilisateurService.ajouterJoueur(pseudo, email, motDePasse, dateDeNaissance);
 
-		return new ModelAndView("redirect:index");
+		return new ModelAndView("redirect:/");
 	}
 
 	/**

@@ -37,6 +37,7 @@
 			</div>
 
 			<input class="btn btn-success" type="submit" value="Inscription">
+			<a href="/" class="btn btn-secondary">Retour à la connexion</a>
 		</form>
 	</main>
 	<jsp:include page="footer.jsp"></jsp:include>

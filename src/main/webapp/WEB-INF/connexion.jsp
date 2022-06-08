@@ -15,16 +15,16 @@
 
 	<form class="mb-3" action="" method="post">
 		<div class="mb-3">
-			<label class="form-label text-uppercase fs-3 " for="pseudo">Pseudo</label> <input
+			<label class="form-label" for="pseudo">Pseudo</label> <input
 				class="form-control" name="pseudo" placeHolder="pseudo" required>
 		</div>
 
 		<div class="mb-3">
-			<label class="form-label text-uppercase fs-3" for="motDePasse">Mot de passe</label> <input
+			<label class="form-label" for="motDePasse">Mot de passe</label> <input
 				class="form-control" type="password" name="motDePasse"
 				placeHolder="Mot de Passe" required>
 		</div>
-		<div class="d-flex justify-content-between">
+		<div>
 			<input class="btn btn-success" type="submit" value="Connexion">
 			<a class="btn btn-dark" href="inscription">S'inscrire</a>
 		</div>
