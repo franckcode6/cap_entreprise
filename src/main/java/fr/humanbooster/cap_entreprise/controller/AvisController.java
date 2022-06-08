@@ -31,25 +31,25 @@ public class AvisController {
 	private final static int NB_AVIS_PAR_PAGE = 5;
 
 	/**
-	 * URL mappinng qui nous renvoie sur la vue listeDesAvis.jsp On récupère les
-	 * avis qui ont été modérés et les avis non modérés du joueur en session qui
-	 * seront paginés
-	 * 
-	 * @param pageable
-	 * @return
-	 */
-	@GetMapping("/avis")
-	public ModelAndView avisGet(@PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
-		ModelAndView mav = new ModelAndView();
+     * URL mappinng qui nous renvoie sur la vue listeDesAvis.jsp On récupère les
+     * avis qui ont été modérés et les avis non modérés du joueur en session qui
+     * seront paginés
+     * 
+     * @param pageable
+     * @return
+     */
+    @GetMapping("/avis")
+    public ModelAndView avisGet(@PageableDefault(size = NB_AVIS_PAR_PAGE, sort = "dateEnvoi") Pageable pageable) {
+        ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("listeDesAvis");
+        mav.setViewName("listeDesAvis");
 
-		Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateurConnecte");
+        Utilisateur utilisateur = (Utilisateur) httpSession.getAttribute("utilisateurConnecte");
 
-		mav.addObject("pages", avisService.recupererAvisJoueurs("franck", utilisateur.getPseudo(), pageable));
+        mav.addObject("pages", avisService.recupererAvisJoueurs(utilisateur.getPseudo(), pageable));
 
-		return mav;
-	}
+        return mav;
+    }
 
 	/**
 	 * URL mappinng qui nous renvoie sur la vue ajoutAvis.jsp, cette vue contient le
@@ -97,7 +97,7 @@ public class AvisController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping("avis/details")
+	@GetMapping("/avis/details")
 	public ModelAndView detailsJeuGet(@RequestParam(name = "id", required = true) Long id) {
 		ModelAndView mav = new ModelAndView();
 
@@ -106,26 +106,28 @@ public class AvisController {
 		mav.addObject("avis", avisService.recupererAvis(id));
 
 		return mav;
+
 	}
-	
-	 /**
-     * Url mapping qui nous renvoie sur la vue detailsJeux.jsp sur une route
-     * accessible aux joueurs On récupère le jeu dont on veut voir le détail grâce à
-     * son id;
-     * 
-     * @param id
-     * @return
-     */
-    @GetMapping("avis/jeux/details")
-    public ModelAndView avisdetailsJeuGet(@RequestParam(name = "id", required = true) Long id) {
-        ModelAndView mav = new ModelAndView();
 
-        mav.setViewName("detailsJeux");
+	/**
+	 * Url mapping qui nous renvoie sur la vue detailsJeux.jsp sur une route
+	 * accessible aux joueurs On récupère le jeu dont on veut voir le détail grâce à
+	 * son id;
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("avis/jeux/details")
+	public ModelAndView avisdetailsJeuGet(@RequestParam(name = "id", required = true) Long id) {
+		ModelAndView mav = new ModelAndView();
 
-        mav.addObject("jeu", jeuService.recupererJeu(id));
+		mav.setViewName("detailsJeux");
 
-        httpSession.getAttribute("utilisateurConnecte");
+		mav.addObject("jeu", jeuService.recupererJeu(id));
 
-        return mav;
-    }
+		httpSession.getAttribute("utilisateurConnecte");
+
+		return mav;
+	}
+
 }

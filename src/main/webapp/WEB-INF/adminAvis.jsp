@@ -46,10 +46,10 @@
 						<td>${avis.joueur.pseudo}</td>
 						<td>${avis.note}</td>
 						<td><img src="/images/${avis.jeu.image}" height="150"></td>
-						<c:if test="${avis.moderateur.pseudo ne null}">
+						<c:if test="${avis.moderateur ne null}">
 							<td><strong>${avis.moderateur.pseudo}</strong></td>
 						</c:if>
-						<c:if test="${avis.moderateur.pseudo eq null}">
+						<c:if test="${avis.moderateur eq null}">
 							<td><a href="/admin/avis/moderation?id=${avis.id}"
 								class="btn btn-outline-danger">Modérer</a></td>
 						</c:if>
