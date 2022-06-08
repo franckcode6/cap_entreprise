@@ -26,7 +26,7 @@ public class CheckSessionFilter implements Filter {
 		if (((HttpServletRequest) request).getRequestURI().startsWith("/admin")
 				&& ((HttpServletRequest) request).getSession().getAttribute("moderateur") == null) {
 			System.out.println("Pas de session");
-			((HttpServletResponse) response).sendRedirect("/");
+			((HttpServletResponse) response).sendRedirect("/erreur");
 		} else if (((HttpServletRequest) request).getRequestURI().startsWith("/avis")
 				&& (((HttpServletRequest) request).getSession().getAttribute("utilisateurConnecte")) == null) {
 			System.out.println("Pas de session");
