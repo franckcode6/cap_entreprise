@@ -36,7 +36,21 @@
 			<tbody>
 				<c:forEach items="${pages.content}" var="avis" varStatus="compte">
 					<tr>
-						<th scope="row">${compte.count}/${pages.content.size()}</th>
+						<c:if test="${pages.getNumber()+1 eq 1}">
+                            <th scope="row">${compte.count}/${pages.totalElements}</th>
+                        </c:if>
+                        <c:if test="${pages.getNumber()+1 eq 2}">
+                            <th scope="row">${compte.count +5}/${pages.totalElements}</th>
+                        </c:if>
+                        <c:if test="${pages.getNumber()+1 eq 3}">
+                            <th scope="row">${compte.count +10}/${pages.totalElements}</th>
+                        </c:if>
+                        <c:if test="${pages.getNumber()+1 eq 4}">
+                            <th scope="row">${compte.count +15}/${pages.totalElements}</th>
+                        </c:if>
+                        <c:if test="${pages.getNumber()+1 eq 5}">
+                            <th scope="row">${compte.count +20}/${pages.totalElements}</th>
+                        </c:if>
 						<td>${avis}</td>
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>
