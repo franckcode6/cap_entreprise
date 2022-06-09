@@ -17,22 +17,22 @@
 		<form class="mt-5" action="inscription" method="post">
 
 			<div class="mb-3">
-				<label class="form-label">Pseudo</label> <input class="form-control"
+				<label class="form-label"><strong>Pseudo</strong></label> <input class="form-control"
 					name="pseudo">
 			</div>
 
 			<div class="mb-3">
-				<label class="form-label">Email</label> <input class="form-control"
+				<label class="form-label"><strong>Email</strong></label> <input class="form-control"
 					type="email" name="email">
 			</div>
 
 			<div class="mb-3">
-				<label class="form-label">Mot de passe</label> <input
+				<label class="form-label"><strong>Mot de passe</strong></label> <input
 					class="form-control" type="password" name="motDePasse">
 			</div>
 
 			<div class="mb-3">
-				<label class="form-label">Date de Naissance</label> <input
+				<label class="form-label"><strong>Date de Naissance</strong></label> <input
 					class="form-control" type="date" name="dateDeNaissance">
 			</div>
 

@@ -12,7 +12,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<main class="container my-5 min-vh-100">
+	<main class="container mt-5 min-vh-100">
 		<h1>Ajouter un avis</h1>
 		<form method="post" class="mt-4">
 

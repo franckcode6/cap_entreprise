@@ -12,7 +12,8 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<div class="container text-center mt-5">
+	<main class="container mt-5 min-vh-100">
+	<div class="container text-center">
 		<div class="card mx-auto" style="width: 30rem">
 			<div class="card-body">
 				<h5 class="card-title">${avis.jeu.nom}</h5>
@@ -26,6 +27,7 @@
 			</div>
 		</div>
 	</div>
+	</main>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

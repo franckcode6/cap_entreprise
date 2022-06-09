@@ -14,7 +14,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container my-5 min-vh-100">
 		<h1>Liste des avis</h1>
-		<table class="table my-4">
+		<table class="table my-4 table-hover">
 			<thead class="table-dark">
 				<tr>
 					<th>#</th>
@@ -41,8 +41,8 @@
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>
 						<td>${avis.note}/20</td>
-						<td><img src="../images/${avis.jeu.image}" height="150"></td>
-						<td>${avis.moderateur.pseudo}</td>
+						<td><img src="../images/${avis.jeu.image}" height="100"></td>
+						<td><strong>${avis.moderateur.pseudo}</strong></td>
 						<td><a href="avis/details?id=${avis.id}"
 							class="btn btn-primary">Détails</a></td>
 					</tr>

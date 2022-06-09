@@ -12,9 +12,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<main class="container min-vh-100 my-2">
+	<main class="container min-vh-100 my-5">
 	<h1>Liste des jeux</h1>
-	<table class="table my-3">
+	<table class="table my-4 table-hover">
 		<thead class="table-dark">
 			<tr>
 				<th scope="col">Image</th>

@@ -18,7 +18,7 @@
 			A modérer</a> <a href="/admin/avis/moderes" class="btn btn-outline-dark ">Avis
 			modérés</a> <a href="/admin/avis" class="btn btn-outline-dark">Tous
 			les avis</a>
-		<table class="table my-4">
+		<table class="table my-4 table-hover">
 			<thead class="table-dark">
 				<tr>
 					<th>#</th>
@@ -45,7 +45,7 @@
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>
 						<td>${avis.note}</td>
-						<td><img src="/images/${avis.jeu.image}" height="150"></td>
+						<td><img src="/images/${avis.jeu.image}" height="100"></td>
 						<c:if test="${avis.moderateur ne null}">
 							<td><strong>${avis.moderateur.pseudo}</strong></td>
 						</c:if>

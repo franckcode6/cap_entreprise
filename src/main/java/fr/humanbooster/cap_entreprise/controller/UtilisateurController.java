@@ -47,7 +47,7 @@ public class UtilisateurController {
 	 * @param motDePasse
 	 * @return
 	 */
-	@PostMapping({ "/" })
+	@PostMapping({ "/index", "/" })
 	public ModelAndView connexionPost(@RequestParam("pseudo") String pseudo,
 			@RequestParam("motDePasse") String motDePasse) {
 
@@ -55,9 +55,10 @@ public class UtilisateurController {
 		System.out.println("utilisateur: " + utilisateur);
 
 		if (utilisateur == null) {
-			ModelAndView mav = new ModelAndView("redirect:/");
+			ModelAndView mav = new ModelAndView("redirect:/index");
 			return mav;
-		} else if (utilisateur.getPseudo().equals("franck")) {
+		} else if (utilisateur.getPseudo().equals("nana") || utilisateur.getPseudo().equals("franck")
+				|| utilisateur.getPseudo().equals("laurent")) {
 			httpSession.setAttribute("utilisateurConnecte", utilisateur);
 			httpSession.setAttribute("moderateur", utilisateur);
 			ModelAndView mav = new ModelAndView("redirect:/admin");
@@ -68,7 +69,6 @@ public class UtilisateurController {
 			ModelAndView mav = new ModelAndView("redirect:/avis");
 			return mav;
 		}
-
 	}
 
 	/**
