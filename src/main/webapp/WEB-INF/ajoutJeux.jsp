@@ -12,9 +12,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<main class="container my-5 min-vh-100">
+	<main class="container my-5 min-vh-100 col-md-6 mx-auto">
 		<c:if test="${jeu eq null}">
-			<h1>Ajouter un nouveau jeu</h1>
+			<h1>Nouveau jeu</h1>
 		</c:if>
 		<c:if test="${jeu ne null}">
 			<h1>Modifier ${jeu.nom}</h1>
@@ -22,30 +22,30 @@
 		<form action="" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${jeu.id}"><br>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label for="nom" class="form-label">Nom</label> <input name="nom"
 					class="form-control" value="${jeu.nom}"><br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label for="description" class="form-label">Description</label>
 				<textarea name="description" class="form-control">${jeu.description}</textarea>
 				<br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label for="dateForm" class="form-label">Date de sortie</label> <input
 					type="date" name="dateSortie" class="form-control"
 					value="${jeu.dateSortie}"><br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label for="image" class="form-label">Téléverser une image</label> <input
 					type="file" name="image" accept="image" placeholder="URL"
 					class="form-control"><br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label for="classification_id" class="form-label">Classification</label>
 				<select name="classification" class="form-select">
 					<c:if test="${jeu eq null}">
@@ -60,7 +60,7 @@
 				</select><br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label for="editeur_id" class="form-label">Editeur</label> <select
 					name="editeur" class="form-select">
 					<c:if test="${jeu eq null}">
@@ -75,7 +75,7 @@
 				</select><br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label for="genre_id" class="form-label">Genre</label> <select
 					name="genre" class="form-select">
 					<c:if test="${jeu eq null}">
@@ -90,7 +90,7 @@
 				</select><br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label for="modeleEconomique_id" class="form-label">Modele
 					Economique</label> <select name="modeleEconomique" class="form-select">
 					<c:if test="${jeu eq null}">
@@ -106,7 +106,7 @@
 			</div>
 
 			<c:if test="${jeu eq null}">
-				<div class="mb-3">
+				<div class="mb-1">
 					<label for="plateforme_id">Plateforme(s)</label> <select
 						name="plateformes" multiple class="form-select">
 						<c:forEach items="${plateformes}" var="plateforme">

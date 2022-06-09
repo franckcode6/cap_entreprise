@@ -12,22 +12,21 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<main class="container mt-5 min-vh-100">
+	<main class="container mt-5 min-vh-100 col-md-6 mx-auto">
 		<h1>Ajouter un avis</h1>
-		<form method="post" class="mt-4">
-
-			<div class="mb-3">
+		<form method="post" class="mt-5">
+			<div class="mb-1">
 				<label for="description" class="form-label">Description</label>
 				<textarea name="description" class="form-control"></textarea>
 				<br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label class="form-label">Note</label> <input type="number"
 					step="any" placeholder="../20" name="note" class="form-control"><br>
 			</div>
 
-			<div class="mb-3">
+			<div class="mb-1">
 				<label class="form-label">Jeu</label> <select name="jeu"
 					class="form-select">
 					<c:forEach items="${jeux}" var="jeu">

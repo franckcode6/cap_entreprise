@@ -41,7 +41,7 @@
 						<td>${avis.jeu.nom}</td>
 						<td>${avis.joueur.pseudo}</td>
 						<td>${avis.note}/20</td>
-						<td><img src="../images/${avis.jeu.image}" height="100"></td>
+						<td><img src="../images/${avis.jeu.image}" height="150"></td>
 						<td><strong>${avis.moderateur.pseudo}</strong></td>
 						<td><a href="avis/details?id=${avis.id}"
 							class="btn btn-primary">Détails</a></td>
